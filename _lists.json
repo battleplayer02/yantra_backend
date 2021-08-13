@@ -1,0 +1,7297 @@
+{
+  "AdminUser": {
+    "autocreate": false,
+    "defaultColumns": "name, email, isAdmin, role, superStockist, stockist, updatedAt, updatedBy, createdAt, createdBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "name": {
+        "path": "name",
+        "paths": {
+          "first": "name.first",
+          "last": "name.last",
+          "full": "name.full"
+        },
+        "type": "name",
+        "label": "Name",
+        "size": "full",
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": {
+          "first": "",
+          "last": ""
+        }
+      },
+      "email": {
+        "path": "email",
+        "type": "text",
+        "label": "Email",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "password": {
+        "path": "password",
+        "paths": {
+          "confirm": "password_confirm",
+          "hash": "password_hash"
+        },
+        "type": "password",
+        "label": "Password",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "nosort": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "role": {
+        "path": "role",
+        "paths": {
+          "data": "roleData",
+          "label": "roleLabel",
+          "options": "roleOptions",
+          "map": "roleOptionsMap"
+        },
+        "type": "select",
+        "label": "Role",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "ops": [
+          {
+            "value": "Company",
+            "label": "Company"
+          },
+          {
+            "value": "Operator",
+            "label": "Operator"
+          },
+          {
+            "value": "Super Stockist",
+            "label": "Super Stockist"
+          },
+          {
+            "value": "Stockist",
+            "label": "Stockist"
+          },
+          {
+            "value": "Retailer",
+            "label": "Retailer"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "operator": {
+        "path": "operator",
+        "paths": {
+          "refList": "operatorRefList"
+        },
+        "type": "relationship",
+        "label": "Operator",
+        "size": "full",
+        "initial": true,
+        "dependsOn": {
+          "role": "Operator"
+        },
+        "isValid": true,
+        "refList": {
+          "singular": "Operator",
+          "plural": "Operators",
+          "path": "operators",
+          "key": "Operator"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "superStockist": {
+        "path": "superStockist",
+        "paths": {
+          "refList": "superStockistRefList"
+        },
+        "type": "relationship",
+        "label": "Super Stockist",
+        "size": "full",
+        "initial": true,
+        "dependsOn": {
+          "role": "Super Stockist"
+        },
+        "isValid": true,
+        "refList": {
+          "singular": "Super Stockist",
+          "plural": "Super Stockists",
+          "path": "super-stockists",
+          "key": "SuperStockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "stockist": {
+        "path": "stockist",
+        "paths": {
+          "refList": "stockistRefList"
+        },
+        "type": "relationship",
+        "label": "Stockist",
+        "size": "full",
+        "initial": true,
+        "dependsOn": {
+          "role": "Stockist"
+        },
+        "isValid": true,
+        "refList": {
+          "singular": "Stockist",
+          "plural": "Stockists",
+          "path": "stockists",
+          "key": "Stockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "retailer": {
+        "path": "retailer",
+        "paths": {
+          "refList": "retailerRefList"
+        },
+        "type": "relationship",
+        "label": "Retailer",
+        "size": "full",
+        "initial": true,
+        "dependsOn": {
+          "role": "Retailer"
+        },
+        "isValid": true,
+        "refList": {
+          "singular": "Retailer",
+          "plural": "Retailers",
+          "path": "retailers",
+          "key": "Retailer"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "isAdmin": {
+        "path": "isAdmin",
+        "type": "boolean",
+        "label": "Can Login To Admin?",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": true
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "email",
+      "password",
+      "role",
+      "operator",
+      "superStockist",
+      "stockist",
+      "retailer",
+      "isAdmin"
+    ],
+    "key": "AdminUser",
+    "label": "Admin Users",
+    "nameField": {
+      "path": "name",
+      "paths": {
+        "first": "name.first",
+        "last": "name.last",
+        "full": "name.full"
+      },
+      "type": "name",
+      "label": "Name",
+      "size": "full",
+      "required": true,
+      "hasFilterMethod": true,
+      "defaultValue": {
+        "first": "",
+        "last": ""
+      }
+    },
+    "nameFieldIsFormHeader": false,
+    "nameIsInitial": true,
+    "nameIsVirtual": false,
+    "namePath": "name",
+    "nocreate": false,
+    "nodelete": true,
+    "noedit": false,
+    "path": "admin-users",
+    "perPage": 100,
+    "plural": "Admin Users",
+    "searchFields": "__name__",
+    "singular": "Admin User",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "name"
+      },
+      {
+        "type": "field",
+        "field": "email"
+      },
+      {
+        "type": "field",
+        "field": "password"
+      },
+      {
+        "type": "heading",
+        "content": "Permissions",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "role"
+      },
+      {
+        "type": "field",
+        "field": "operator"
+      },
+      {
+        "type": "field",
+        "field": "superStockist"
+      },
+      {
+        "type": "field",
+        "field": "stockist"
+      },
+      {
+        "type": "field",
+        "field": "retailer"
+      },
+      {
+        "type": "field",
+        "field": "isAdmin"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "ApiClient": {
+    "autocreate": false,
+    "defaultColumns": "key, secret, name, description, grants",
+    "defaultSort": "-createdAt",
+    "fields": {
+      "key": {
+        "path": "key",
+        "type": "text",
+        "label": "Key",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "secret": {
+        "path": "secret",
+        "type": "text",
+        "label": "Secret",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "name": {
+        "path": "name",
+        "type": "text",
+        "label": "Name",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "description": {
+        "path": "description",
+        "type": "textarea",
+        "label": "Description",
+        "size": "full",
+        "initial": true,
+        "height": 90,
+        "multiline": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "grants": {
+        "path": "grants",
+        "type": "selectarray",
+        "label": "Grants",
+        "size": "full",
+        "initial": true,
+        "ops": [
+          {
+            "value": "config:agent",
+            "label": "Config Agent"
+          },
+          {
+            "value": "config:production",
+            "label": "Config Production"
+          },
+          {
+            "value": "config:preprod",
+            "label": "Config Preprod"
+          },
+          {
+            "value": "config:staging",
+            "label": "Config Staging"
+          },
+          {
+            "value": "config:qa",
+            "label": "Config Qa"
+          },
+          {
+            "value": "config:test",
+            "label": "Config Test"
+          },
+          {
+            "value": "config:development",
+            "label": "Config Development"
+          },
+          {
+            "value": "runner:agent",
+            "label": "Runner Agent"
+          },
+          {
+            "value": "runner:scripts",
+            "label": "Runner Scripts"
+          },
+          {
+            "value": "runner:stats",
+            "label": "Runner Stats"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "key",
+      "secret",
+      "name",
+      "description",
+      "grants"
+    ],
+    "key": "ApiClient",
+    "label": "Api Clients",
+    "nameField": {
+      "path": "name",
+      "type": "text",
+      "label": "Name",
+      "size": "full",
+      "initial": true,
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": true,
+    "nameIsInitial": false,
+    "nameIsVirtual": false,
+    "namePath": "name",
+    "nocreate": false,
+    "nodelete": false,
+    "noedit": false,
+    "path": "api-clients",
+    "perPage": 100,
+    "plural": "Api Clients",
+    "searchFields": "__name__",
+    "singular": "Api Client",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "key"
+      },
+      {
+        "type": "field",
+        "field": "secret"
+      },
+      {
+        "type": "field",
+        "field": "name"
+      },
+      {
+        "type": "field",
+        "field": "description"
+      },
+      {
+        "type": "field",
+        "field": "grants"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "Config": {
+    "autocreate": false,
+    "defaultColumns": "name, type, value, environment, isPublic, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "name": {
+        "path": "name",
+        "type": "text",
+        "label": "Name",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "type": {
+        "path": "type",
+        "paths": {
+          "data": "typeData",
+          "label": "typeLabel",
+          "options": "typeOptions",
+          "map": "typeOptionsMap"
+        },
+        "type": "select",
+        "label": "Type",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "ops": [
+          {
+            "value": "NUMBER",
+            "label": "NUMBER"
+          },
+          {
+            "value": "DATETIME",
+            "label": "DATETIME"
+          },
+          {
+            "value": "BOOLEAN",
+            "label": "BOOLEAN"
+          },
+          {
+            "value": "TEXT",
+            "label": "TEXT"
+          },
+          {
+            "value": "LARGE TEXT",
+            "label": "LARGE TEXT"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "environment": {
+        "path": "environment",
+        "paths": {
+          "data": "environmentData",
+          "label": "environmentLabel",
+          "options": "environmentOptions",
+          "map": "environmentOptionsMap"
+        },
+        "type": "select",
+        "label": "Environment",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "ops": [
+          {
+            "value": "development",
+            "label": "Development"
+          },
+          {
+            "value": "staging",
+            "label": "Staging"
+          },
+          {
+            "value": "qa",
+            "label": "Qa"
+          },
+          {
+            "value": "test",
+            "label": "Test"
+          },
+          {
+            "value": "production",
+            "label": "Production"
+          },
+          {
+            "value": "preprod",
+            "label": "Preprod"
+          },
+          {
+            "value": "all",
+            "label": "All"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "value": {
+        "path": "value",
+        "type": "text",
+        "label": "Value",
+        "size": "full",
+        "noedit": true,
+        "hidden": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "valueNumber": {
+        "path": "valueNumber",
+        "type": "number",
+        "label": "Value",
+        "size": "small",
+        "initial": true,
+        "dependsOn": {
+          "type": "NUMBER"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "valueDatetime": {
+        "path": "valueDatetime",
+        "paths": {
+          "date": "valueDatetime_date",
+          "time": "valueDatetime_time",
+          "tzOffset": "valueDatetime_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Value",
+        "size": "full",
+        "initial": true,
+        "dependsOn": {
+          "type": "DATETIME"
+        },
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "valueBoolean": {
+        "path": "valueBoolean",
+        "type": "boolean",
+        "label": "Value",
+        "size": "full",
+        "initial": true,
+        "dependsOn": {
+          "type": "BOOLEAN"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": false
+      },
+      "valueText": {
+        "path": "valueText",
+        "type": "text",
+        "label": "Value",
+        "size": "full",
+        "initial": true,
+        "dependsOn": {
+          "type": "TEXT"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "valueLargeText": {
+        "path": "valueLargeText",
+        "type": "textarea",
+        "label": "Value",
+        "size": "full",
+        "initial": true,
+        "dependsOn": {
+          "type": "LARGE TEXT"
+        },
+        "height": 90,
+        "multiline": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "isPublic": {
+        "path": "isPublic",
+        "type": "boolean",
+        "label": "Is Public",
+        "size": "full",
+        "hasFilterMethod": true,
+        "defaultValue": true
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "name",
+      "type",
+      "environment",
+      "valueNumber",
+      "valueDatetime",
+      "valueBoolean",
+      "valueText",
+      "valueLargeText"
+    ],
+    "key": "Config",
+    "label": "Configs",
+    "nameField": {
+      "path": "name",
+      "type": "text",
+      "label": "Name",
+      "size": "full",
+      "initial": true,
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": true,
+    "nameIsInitial": false,
+    "nameIsVirtual": false,
+    "namePath": "name",
+    "nocreate": false,
+    "nodelete": true,
+    "noedit": false,
+    "path": "configs",
+    "perPage": 100,
+    "plural": "Configs",
+    "searchFields": "__name__",
+    "singular": "Config",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "name"
+      },
+      {
+        "type": "field",
+        "field": "type"
+      },
+      {
+        "type": "field",
+        "field": "environment"
+      },
+      {
+        "type": "field",
+        "field": "valueNumber"
+      },
+      {
+        "type": "field",
+        "field": "valueDatetime"
+      },
+      {
+        "type": "field",
+        "field": "valueBoolean"
+      },
+      {
+        "type": "field",
+        "field": "valueText"
+      },
+      {
+        "type": "field",
+        "field": "valueLargeText"
+      },
+      {
+        "type": "field",
+        "field": "isPublic"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "ConfigChangeHistory": {
+    "autocreate": false,
+    "defaultColumns": "createdAt, config, changedField, oldVal, newVal, group, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "config": {
+        "path": "config",
+        "paths": {
+          "refList": "configRefList"
+        },
+        "type": "relationship",
+        "label": "Config",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Config",
+          "plural": "Configs",
+          "path": "configs",
+          "key": "Config"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "changedField": {
+        "path": "changedField",
+        "type": "text",
+        "label": "Changed Field",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "oldVal": {
+        "path": "oldVal",
+        "type": "text",
+        "label": "Old Val",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "newVal": {
+        "path": "newVal",
+        "type": "text",
+        "label": "New Val",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "group": {
+        "path": "group",
+        "type": "text",
+        "label": "Group",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "config",
+      "changedField",
+      "group"
+    ],
+    "key": "ConfigChangeHistory",
+    "label": "Config Change Histories",
+    "nameField": null,
+    "nameFieldIsFormHeader": false,
+    "nameIsVirtual": false,
+    "namePath": "_id",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "config-change-histories",
+    "perPage": 100,
+    "plural": "Config Change Histories",
+    "searchFields": "__name__",
+    "singular": "Config Change History",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "config"
+      },
+      {
+        "type": "field",
+        "field": "changedField"
+      },
+      {
+        "type": "field",
+        "field": "oldVal"
+      },
+      {
+        "type": "field",
+        "field": "newVal"
+      },
+      {
+        "type": "field",
+        "field": "group"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "CreditLedgerEntry": {
+    "autocreate": false,
+    "defaultColumns": "description, mode, operator, superStockist, stockist, retailer, amount, balance, createdBy, createdAt",
+    "defaultSort": "__default__",
+    "fields": {
+      "description": {
+        "path": "description",
+        "type": "text",
+        "label": "Description",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "mode": {
+        "path": "mode",
+        "paths": {
+          "data": "modeData",
+          "label": "modeLabel",
+          "options": "modeOptions",
+          "map": "modeOptionsMap"
+        },
+        "type": "select",
+        "label": "Mode",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "ops": [
+          {
+            "value": "DEBIT",
+            "label": "DEBIT"
+          },
+          {
+            "value": "CREDIT",
+            "label": "CREDIT"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": "CREDIT"
+      },
+      "operator": {
+        "path": "operator",
+        "paths": {
+          "refList": "operatorRefList"
+        },
+        "type": "relationship",
+        "label": "Operator",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Operator",
+          "plural": "Operators",
+          "path": "operators",
+          "key": "Operator"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "superStockist": {
+        "path": "superStockist",
+        "paths": {
+          "refList": "superStockistRefList"
+        },
+        "type": "relationship",
+        "label": "Super Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Super Stockist",
+          "plural": "Super Stockists",
+          "path": "super-stockists",
+          "key": "SuperStockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "stockist": {
+        "path": "stockist",
+        "paths": {
+          "refList": "stockistRefList"
+        },
+        "type": "relationship",
+        "label": "Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Stockist",
+          "plural": "Stockists",
+          "path": "stockists",
+          "key": "Stockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "retailer": {
+        "path": "retailer",
+        "paths": {
+          "refList": "retailerRefList"
+        },
+        "type": "relationship",
+        "label": "Retailer",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Retailer",
+          "plural": "Retailers",
+          "path": "retailers",
+          "key": "Retailer"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "amount": {
+        "path": "amount",
+        "type": "number",
+        "label": "Amount",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "balance": {
+        "path": "balance",
+        "type": "number",
+        "label": "Balance",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "description",
+      "mode",
+      "operator",
+      "superStockist",
+      "stockist",
+      "retailer",
+      "amount"
+    ],
+    "key": "CreditLedgerEntry",
+    "label": "Credit Ledger Entries",
+    "nameField": null,
+    "nameFieldIsFormHeader": false,
+    "nameIsVirtual": false,
+    "namePath": "_id",
+    "nocreate": false,
+    "nodelete": true,
+    "noedit": true,
+    "path": "credit-ledger-entries",
+    "perPage": 100,
+    "plural": "Credit Ledger Entries",
+    "searchFields": "__name__",
+    "singular": "Credit Ledger Entry",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "description"
+      },
+      {
+        "type": "field",
+        "field": "mode"
+      },
+      {
+        "type": "field",
+        "field": "operator"
+      },
+      {
+        "type": "field",
+        "field": "superStockist"
+      },
+      {
+        "type": "field",
+        "field": "stockist"
+      },
+      {
+        "type": "field",
+        "field": "retailer"
+      },
+      {
+        "type": "field",
+        "field": "amount"
+      },
+      {
+        "type": "field",
+        "field": "balance"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "Game": {
+    "autocreate": false,
+    "defaultColumns": "name, description, isPrivate, payoutPercentage, algorithm, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "name": {
+        "path": "name",
+        "type": "text",
+        "label": "Name",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "description": {
+        "path": "description",
+        "type": "textarea",
+        "label": "Description",
+        "size": "full",
+        "initial": true,
+        "height": 90,
+        "multiline": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalTimeSecs": {
+        "path": "totalTimeSecs",
+        "type": "number",
+        "label": "Total Time Secs",
+        "size": "small",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": 300
+      },
+      "freezeTimeSecs": {
+        "path": "freezeTimeSecs",
+        "type": "number",
+        "label": "Freeze Time Secs",
+        "size": "small",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": 15
+      },
+      "pointValue": {
+        "path": "pointValue",
+        "type": "number",
+        "label": "Point Value",
+        "size": "small",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": 2
+      },
+      "winPointsPerPoint": {
+        "path": "winPointsPerPoint",
+        "type": "number",
+        "label": "Win Points Per Point",
+        "size": "small",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": 9
+      },
+      "payoutPercentage": {
+        "path": "payoutPercentage",
+        "type": "number",
+        "label": "Payout Percentage",
+        "size": "small",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": 80
+      },
+      "algorithm": {
+        "path": "algorithm",
+        "paths": {
+          "data": "algorithmData",
+          "label": "algorithmLabel",
+          "options": "algorithmOptions",
+          "map": "algorithmOptionsMap"
+        },
+        "type": "select",
+        "label": "Algorithm",
+        "size": "full",
+        "initial": true,
+        "ops": [
+          {
+            "value": "MAXIMIZE PAYOUT",
+            "label": "MAXIMIZE PAYOUT"
+          },
+          {
+            "value": "MAXIMIZE SPREAD",
+            "label": "MAXIMIZE SPREAD"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": "MAXIMIZE PAYOUT"
+      },
+      "spreadUpperDelta": {
+        "path": "spreadUpperDelta",
+        "type": "number",
+        "label": "Spread Upper Delta",
+        "size": "small",
+        "initial": true,
+        "dependsOn": {
+          "algorithm": "MAXIMIZE SPREAD"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": 5
+      },
+      "spreadLowerDelta": {
+        "path": "spreadLowerDelta",
+        "type": "number",
+        "label": "Spread Lower Delta",
+        "size": "small",
+        "initial": true,
+        "dependsOn": {
+          "algorithm": "MAXIMIZE SPREAD"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": 10
+      },
+      "isPrivate": {
+        "path": "isPrivate",
+        "type": "boolean",
+        "label": "Is Private",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": false
+      },
+      "startTime.hour": {
+        "path": "startTime.hour",
+        "paths": {
+          "data": "startTime.hourData",
+          "label": "startTime.hourLabel",
+          "options": "startTime.hourOptions",
+          "map": "startTime.hourOptionsMap"
+        },
+        "type": "select",
+        "label": "Start Time Hour",
+        "size": "full",
+        "ops": [
+          {
+            "value": "0",
+            "label": "0"
+          },
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "11",
+            "label": "11"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "13",
+            "label": "13"
+          },
+          {
+            "value": "14",
+            "label": "14"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "16",
+            "label": "16"
+          },
+          {
+            "value": "17",
+            "label": "17"
+          },
+          {
+            "value": "18",
+            "label": "18"
+          },
+          {
+            "value": "19",
+            "label": "19"
+          },
+          {
+            "value": "20",
+            "label": "20"
+          },
+          {
+            "value": "21",
+            "label": "21"
+          },
+          {
+            "value": "22",
+            "label": "22"
+          },
+          {
+            "value": "23",
+            "label": "23"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": "8"
+      },
+      "startTime.mins": {
+        "path": "startTime.mins",
+        "paths": {
+          "data": "startTime.minsData",
+          "label": "startTime.minsLabel",
+          "options": "startTime.minsOptions",
+          "map": "startTime.minsOptionsMap"
+        },
+        "type": "select",
+        "label": "Start Time Mins",
+        "size": "full",
+        "ops": [
+          {
+            "value": "0",
+            "label": "0"
+          },
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "11",
+            "label": "11"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "13",
+            "label": "13"
+          },
+          {
+            "value": "14",
+            "label": "14"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "16",
+            "label": "16"
+          },
+          {
+            "value": "17",
+            "label": "17"
+          },
+          {
+            "value": "18",
+            "label": "18"
+          },
+          {
+            "value": "19",
+            "label": "19"
+          },
+          {
+            "value": "20",
+            "label": "20"
+          },
+          {
+            "value": "21",
+            "label": "21"
+          },
+          {
+            "value": "22",
+            "label": "22"
+          },
+          {
+            "value": "23",
+            "label": "23"
+          },
+          {
+            "value": "24",
+            "label": "24"
+          },
+          {
+            "value": "25",
+            "label": "25"
+          },
+          {
+            "value": "26",
+            "label": "26"
+          },
+          {
+            "value": "27",
+            "label": "27"
+          },
+          {
+            "value": "28",
+            "label": "28"
+          },
+          {
+            "value": "29",
+            "label": "29"
+          },
+          {
+            "value": "30",
+            "label": "30"
+          },
+          {
+            "value": "31",
+            "label": "31"
+          },
+          {
+            "value": "32",
+            "label": "32"
+          },
+          {
+            "value": "33",
+            "label": "33"
+          },
+          {
+            "value": "34",
+            "label": "34"
+          },
+          {
+            "value": "35",
+            "label": "35"
+          },
+          {
+            "value": "36",
+            "label": "36"
+          },
+          {
+            "value": "37",
+            "label": "37"
+          },
+          {
+            "value": "38",
+            "label": "38"
+          },
+          {
+            "value": "39",
+            "label": "39"
+          },
+          {
+            "value": "40",
+            "label": "40"
+          },
+          {
+            "value": "41",
+            "label": "41"
+          },
+          {
+            "value": "42",
+            "label": "42"
+          },
+          {
+            "value": "43",
+            "label": "43"
+          },
+          {
+            "value": "44",
+            "label": "44"
+          },
+          {
+            "value": "45",
+            "label": "45"
+          },
+          {
+            "value": "46",
+            "label": "46"
+          },
+          {
+            "value": "47",
+            "label": "47"
+          },
+          {
+            "value": "48",
+            "label": "48"
+          },
+          {
+            "value": "49",
+            "label": "49"
+          },
+          {
+            "value": "50",
+            "label": "50"
+          },
+          {
+            "value": "51",
+            "label": "51"
+          },
+          {
+            "value": "52",
+            "label": "52"
+          },
+          {
+            "value": "53",
+            "label": "53"
+          },
+          {
+            "value": "54",
+            "label": "54"
+          },
+          {
+            "value": "55",
+            "label": "55"
+          },
+          {
+            "value": "56",
+            "label": "56"
+          },
+          {
+            "value": "57",
+            "label": "57"
+          },
+          {
+            "value": "58",
+            "label": "58"
+          },
+          {
+            "value": "59",
+            "label": "59"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": "0"
+      },
+      "endTime.hour": {
+        "path": "endTime.hour",
+        "paths": {
+          "data": "endTime.hourData",
+          "label": "endTime.hourLabel",
+          "options": "endTime.hourOptions",
+          "map": "endTime.hourOptionsMap"
+        },
+        "type": "select",
+        "label": "End Time Hour",
+        "size": "full",
+        "ops": [
+          {
+            "value": "0",
+            "label": "0"
+          },
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "11",
+            "label": "11"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "13",
+            "label": "13"
+          },
+          {
+            "value": "14",
+            "label": "14"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "16",
+            "label": "16"
+          },
+          {
+            "value": "17",
+            "label": "17"
+          },
+          {
+            "value": "18",
+            "label": "18"
+          },
+          {
+            "value": "19",
+            "label": "19"
+          },
+          {
+            "value": "20",
+            "label": "20"
+          },
+          {
+            "value": "21",
+            "label": "21"
+          },
+          {
+            "value": "22",
+            "label": "22"
+          },
+          {
+            "value": "23",
+            "label": "23"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": "18"
+      },
+      "endTime.mins": {
+        "path": "endTime.mins",
+        "paths": {
+          "data": "endTime.minsData",
+          "label": "endTime.minsLabel",
+          "options": "endTime.minsOptions",
+          "map": "endTime.minsOptionsMap"
+        },
+        "type": "select",
+        "label": "End Time Mins",
+        "size": "full",
+        "ops": [
+          {
+            "value": "0",
+            "label": "0"
+          },
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "11",
+            "label": "11"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "13",
+            "label": "13"
+          },
+          {
+            "value": "14",
+            "label": "14"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "16",
+            "label": "16"
+          },
+          {
+            "value": "17",
+            "label": "17"
+          },
+          {
+            "value": "18",
+            "label": "18"
+          },
+          {
+            "value": "19",
+            "label": "19"
+          },
+          {
+            "value": "20",
+            "label": "20"
+          },
+          {
+            "value": "21",
+            "label": "21"
+          },
+          {
+            "value": "22",
+            "label": "22"
+          },
+          {
+            "value": "23",
+            "label": "23"
+          },
+          {
+            "value": "24",
+            "label": "24"
+          },
+          {
+            "value": "25",
+            "label": "25"
+          },
+          {
+            "value": "26",
+            "label": "26"
+          },
+          {
+            "value": "27",
+            "label": "27"
+          },
+          {
+            "value": "28",
+            "label": "28"
+          },
+          {
+            "value": "29",
+            "label": "29"
+          },
+          {
+            "value": "30",
+            "label": "30"
+          },
+          {
+            "value": "31",
+            "label": "31"
+          },
+          {
+            "value": "32",
+            "label": "32"
+          },
+          {
+            "value": "33",
+            "label": "33"
+          },
+          {
+            "value": "34",
+            "label": "34"
+          },
+          {
+            "value": "35",
+            "label": "35"
+          },
+          {
+            "value": "36",
+            "label": "36"
+          },
+          {
+            "value": "37",
+            "label": "37"
+          },
+          {
+            "value": "38",
+            "label": "38"
+          },
+          {
+            "value": "39",
+            "label": "39"
+          },
+          {
+            "value": "40",
+            "label": "40"
+          },
+          {
+            "value": "41",
+            "label": "41"
+          },
+          {
+            "value": "42",
+            "label": "42"
+          },
+          {
+            "value": "43",
+            "label": "43"
+          },
+          {
+            "value": "44",
+            "label": "44"
+          },
+          {
+            "value": "45",
+            "label": "45"
+          },
+          {
+            "value": "46",
+            "label": "46"
+          },
+          {
+            "value": "47",
+            "label": "47"
+          },
+          {
+            "value": "48",
+            "label": "48"
+          },
+          {
+            "value": "49",
+            "label": "49"
+          },
+          {
+            "value": "50",
+            "label": "50"
+          },
+          {
+            "value": "51",
+            "label": "51"
+          },
+          {
+            "value": "52",
+            "label": "52"
+          },
+          {
+            "value": "53",
+            "label": "53"
+          },
+          {
+            "value": "54",
+            "label": "54"
+          },
+          {
+            "value": "55",
+            "label": "55"
+          },
+          {
+            "value": "56",
+            "label": "56"
+          },
+          {
+            "value": "57",
+            "label": "57"
+          },
+          {
+            "value": "58",
+            "label": "58"
+          },
+          {
+            "value": "59",
+            "label": "59"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": "0"
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "name",
+      "description",
+      "totalTimeSecs",
+      "freezeTimeSecs",
+      "pointValue",
+      "winPointsPerPoint",
+      "payoutPercentage",
+      "algorithm",
+      "spreadUpperDelta",
+      "spreadLowerDelta",
+      "isPrivate"
+    ],
+    "key": "Game",
+    "label": "Games",
+    "nameField": {
+      "path": "name",
+      "type": "text",
+      "label": "Name",
+      "size": "full",
+      "initial": true,
+      "required": true,
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": true,
+    "nameIsInitial": false,
+    "nameIsVirtual": false,
+    "namePath": "name",
+    "nocreate": false,
+    "nodelete": false,
+    "noedit": false,
+    "path": "games",
+    "perPage": 100,
+    "plural": "Games",
+    "searchFields": "__name__",
+    "singular": "Game",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "name"
+      },
+      {
+        "type": "field",
+        "field": "description"
+      },
+      {
+        "type": "heading",
+        "content": "Settings",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "totalTimeSecs"
+      },
+      {
+        "type": "field",
+        "field": "freezeTimeSecs"
+      },
+      {
+        "type": "field",
+        "field": "pointValue"
+      },
+      {
+        "type": "field",
+        "field": "winPointsPerPoint"
+      },
+      {
+        "type": "field",
+        "field": "payoutPercentage"
+      },
+      {
+        "type": "field",
+        "field": "algorithm"
+      },
+      {
+        "type": "field",
+        "field": "spreadUpperDelta"
+      },
+      {
+        "type": "field",
+        "field": "spreadLowerDelta"
+      },
+      {
+        "type": "heading",
+        "content": "Visibility",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "isPrivate"
+      },
+      {
+        "type": "field",
+        "field": "startTime.hour"
+      },
+      {
+        "type": "field",
+        "field": "startTime.mins"
+      },
+      {
+        "type": "field",
+        "field": "endTime.hour"
+      },
+      {
+        "type": "field",
+        "field": "endTime.mins"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "GameLedgerEntry": {
+    "autocreate": false,
+    "defaultColumns": "description, mode, game, operator, superStockist, stockist, retailer, createdBy, createdAt",
+    "defaultSort": "__default__",
+    "fields": {
+      "description": {
+        "path": "description",
+        "type": "text",
+        "label": "Description",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "mode": {
+        "path": "mode",
+        "paths": {
+          "data": "modeData",
+          "label": "modeLabel",
+          "options": "modeOptions",
+          "map": "modeOptionsMap"
+        },
+        "type": "select",
+        "label": "Mode",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "ops": [
+          {
+            "value": "DEBIT",
+            "label": "DEBIT"
+          },
+          {
+            "value": "CREDIT",
+            "label": "CREDIT"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": "CREDIT"
+      },
+      "game": {
+        "path": "game",
+        "paths": {
+          "refList": "gameRefList"
+        },
+        "type": "relationship",
+        "label": "Game",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game",
+          "plural": "Games",
+          "path": "games",
+          "key": "Game"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "operator": {
+        "path": "operator",
+        "paths": {
+          "refList": "operatorRefList"
+        },
+        "type": "relationship",
+        "label": "Operator",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Operator",
+          "plural": "Operators",
+          "path": "operators",
+          "key": "Operator"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "superStockist": {
+        "path": "superStockist",
+        "paths": {
+          "refList": "superStockistRefList"
+        },
+        "type": "relationship",
+        "label": "Super Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Super Stockist",
+          "plural": "Super Stockists",
+          "path": "super-stockists",
+          "key": "SuperStockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "stockist": {
+        "path": "stockist",
+        "paths": {
+          "refList": "stockistRefList"
+        },
+        "type": "relationship",
+        "label": "Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Stockist",
+          "plural": "Stockists",
+          "path": "stockists",
+          "key": "Stockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "retailer": {
+        "path": "retailer",
+        "paths": {
+          "refList": "retailerRefList"
+        },
+        "type": "relationship",
+        "label": "Retailer",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Retailer",
+          "plural": "Retailers",
+          "path": "retailers",
+          "key": "Retailer"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "amount": {
+        "path": "amount",
+        "type": "number",
+        "label": "Amount",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "balance": {
+        "path": "balance",
+        "type": "number",
+        "label": "Balance",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "description",
+      "mode",
+      "game",
+      "operator",
+      "superStockist",
+      "stockist",
+      "retailer"
+    ],
+    "key": "GameLedgerEntry",
+    "label": "Game Ledger Entries",
+    "nameField": null,
+    "nameFieldIsFormHeader": false,
+    "nameIsVirtual": false,
+    "namePath": "_id",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "game-ledger-entries",
+    "perPage": 100,
+    "plural": "Game Ledger Entries",
+    "searchFields": "__name__",
+    "singular": "Game Ledger Entry",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "description"
+      },
+      {
+        "type": "field",
+        "field": "mode"
+      },
+      {
+        "type": "field",
+        "field": "game"
+      },
+      {
+        "type": "field",
+        "field": "operator"
+      },
+      {
+        "type": "field",
+        "field": "superStockist"
+      },
+      {
+        "type": "field",
+        "field": "stockist"
+      },
+      {
+        "type": "field",
+        "field": "retailer"
+      },
+      {
+        "type": "field",
+        "field": "amount"
+      },
+      {
+        "type": "field",
+        "field": "balance"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "GamePlay": {
+    "autocreate": false,
+    "defaultColumns": "info, game, isCompleted, totalBet, totalPayout, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "info": {
+        "path": "info",
+        "type": "text",
+        "label": "Info",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "code": {
+        "path": "code",
+        "type": "text",
+        "label": "Code",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "game": {
+        "path": "game",
+        "paths": {
+          "refList": "gameRefList"
+        },
+        "type": "relationship",
+        "label": "Game",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game",
+          "plural": "Games",
+          "path": "games",
+          "key": "Game"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "startTime": {
+        "path": "startTime",
+        "type": "number",
+        "label": "Start Time",
+        "size": "small",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "endTime": {
+        "path": "endTime",
+        "type": "number",
+        "label": "End Time",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalBet": {
+        "path": "totalBet",
+        "type": "number",
+        "label": "Total Bet",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalPayout": {
+        "path": "totalPayout",
+        "type": "number",
+        "label": "Total Payout",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "strategy": {
+        "path": "strategy",
+        "type": "textarray",
+        "label": "Strategy",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "isCompleted": {
+        "path": "isCompleted",
+        "type": "boolean",
+        "label": "Is Completed",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": false
+      },
+      "winner": {
+        "path": "winner",
+        "type": "text",
+        "label": "Winner",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "info",
+      "code",
+      "game",
+      "startTime",
+      "endTime",
+      "totalBet",
+      "totalPayout"
+    ],
+    "key": "GamePlay",
+    "label": "Game Plays",
+    "nameField": null,
+    "nameFieldIsFormHeader": false,
+    "nameIsVirtual": false,
+    "namePath": "_id",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "game-plays",
+    "perPage": 100,
+    "plural": "Game Plays",
+    "searchFields": "__name__",
+    "singular": "Game Play",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "info"
+      },
+      {
+        "type": "field",
+        "field": "code"
+      },
+      {
+        "type": "heading",
+        "content": "Settings",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "game"
+      },
+      {
+        "type": "field",
+        "field": "startTime"
+      },
+      {
+        "type": "field",
+        "field": "endTime"
+      },
+      {
+        "type": "field",
+        "field": "totalBet"
+      },
+      {
+        "type": "field",
+        "field": "totalPayout"
+      },
+      {
+        "type": "field",
+        "field": "strategy"
+      },
+      {
+        "type": "field",
+        "field": "isCompleted"
+      },
+      {
+        "type": "field",
+        "field": "winner"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "GamePlayWiseReport": {
+    "autocreate": false,
+    "defaultColumns": "date,code,gamePlay,tickets,mPts,fPts,cancel,game,numTerminals,winner",
+    "defaultSort": "-date",
+    "fields": {
+      "date": {
+        "path": "date",
+        "type": "date",
+        "label": "Date",
+        "size": "medium",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "formatString": "Do MMM YYYY",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "day": {
+        "path": "day",
+        "type": "number",
+        "label": "Day",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "month": {
+        "path": "month",
+        "type": "number",
+        "label": "Month",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "year": {
+        "path": "year",
+        "type": "number",
+        "label": "Year",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "game": {
+        "path": "game",
+        "paths": {
+          "refList": "gameRefList"
+        },
+        "type": "relationship",
+        "label": "Game",
+        "size": "full",
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game",
+          "plural": "Games",
+          "path": "games",
+          "key": "Game"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "gamePlay": {
+        "path": "gamePlay",
+        "paths": {
+          "refList": "gamePlayRefList"
+        },
+        "type": "relationship",
+        "label": "Game Play",
+        "size": "full",
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game Play",
+          "plural": "Game Plays",
+          "path": "game-plays",
+          "key": "GamePlay"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "code": {
+        "path": "code",
+        "type": "text",
+        "label": "Code",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "breakdown": {
+        "path": "breakdown",
+        "type": "textarea",
+        "label": "Breakdown",
+        "size": "full",
+        "noedit": true,
+        "height": 90,
+        "multiline": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "payoutPercentage": {
+        "path": "payoutPercentage",
+        "type": "number",
+        "label": "Payout Percentage",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "winner": {
+        "path": "winner",
+        "type": "text",
+        "label": "Winner",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "tickets": {
+        "path": "tickets",
+        "type": "number",
+        "label": "Tickets",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "numTerminals": {
+        "path": "numTerminals",
+        "type": "number",
+        "label": "Num Terminals",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "mPts": {
+        "path": "mPts",
+        "type": "number",
+        "label": "M.Pts",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "fPts": {
+        "path": "fPts",
+        "type": "number",
+        "label": "F.Pts",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "cancel": {
+        "path": "cancel",
+        "type": "number",
+        "label": "Cancel",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "date"
+    ],
+    "key": "GamePlayWiseReport",
+    "label": "Game Play Wise Reports",
+    "nameField": {
+      "path": "code",
+      "type": "text",
+      "label": "Code",
+      "size": "full",
+      "noedit": true,
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": false,
+    "nameIsInitial": true,
+    "nameIsVirtual": false,
+    "namePath": "code",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "game-play-wise-reports",
+    "perPage": 100,
+    "plural": "Game Play Wise Reports",
+    "searchFields": "__name__",
+    "singular": "Game Play Wise Report",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "date"
+      },
+      {
+        "type": "field",
+        "field": "day"
+      },
+      {
+        "type": "field",
+        "field": "month"
+      },
+      {
+        "type": "field",
+        "field": "year"
+      },
+      {
+        "type": "heading",
+        "content": "Cohort Info",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "game"
+      },
+      {
+        "type": "field",
+        "field": "gamePlay"
+      },
+      {
+        "type": "field",
+        "field": "code"
+      },
+      {
+        "type": "heading",
+        "content": "Stats",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "breakdown"
+      },
+      {
+        "type": "field",
+        "field": "payoutPercentage"
+      },
+      {
+        "type": "field",
+        "field": "winner"
+      },
+      {
+        "type": "field",
+        "field": "tickets"
+      },
+      {
+        "type": "field",
+        "field": "numTerminals"
+      },
+      {
+        "type": "field",
+        "field": "mPts"
+      },
+      {
+        "type": "field",
+        "field": "fPts"
+      },
+      {
+        "type": "field",
+        "field": "cancel"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "GamePurchase": {
+    "autocreate": false,
+    "defaultColumns": "code, num, points, val, game, terminal, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "code": {
+        "path": "code",
+        "type": "text",
+        "label": "Code",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "num": {
+        "path": "num",
+        "type": "text",
+        "label": "Num",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "bkd": {
+        "path": "bkd",
+        "type": "text",
+        "label": "Bkd",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "points": {
+        "path": "points",
+        "type": "number",
+        "label": "Points",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "val": {
+        "path": "val",
+        "type": "number",
+        "label": "Val",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "terminal": {
+        "path": "terminal",
+        "paths": {
+          "refList": "terminalRefList"
+        },
+        "type": "relationship",
+        "label": "Terminal",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Terminal",
+          "plural": "Terminals",
+          "path": "terminals",
+          "key": "Terminal"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "redeemTerminal": {
+        "path": "redeemTerminal",
+        "paths": {
+          "refList": "redeemTerminalRefList"
+        },
+        "type": "relationship",
+        "label": "Redeem Terminal",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Terminal",
+          "plural": "Terminals",
+          "path": "terminals",
+          "key": "Terminal"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "gamePlay": {
+        "path": "gamePlay",
+        "paths": {
+          "refList": "gamePlayRefList"
+        },
+        "type": "relationship",
+        "label": "Game Play",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game Play",
+          "plural": "Game Plays",
+          "path": "game-plays",
+          "key": "GamePlay"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "game": {
+        "path": "game",
+        "paths": {
+          "refList": "gameRefList"
+        },
+        "type": "relationship",
+        "label": "Game",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game",
+          "plural": "Games",
+          "path": "games",
+          "key": "Game"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "isRedeemed": {
+        "path": "isRedeemed",
+        "type": "boolean",
+        "label": "Is Redeemed",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": false
+      },
+      "isCancelled": {
+        "path": "isCancelled",
+        "type": "boolean",
+        "label": "Is Cancelled",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": false
+      },
+      "redeemedAt": {
+        "path": "redeemedAt",
+        "type": "date",
+        "label": "Redeemed At",
+        "size": "medium",
+        "noedit": true,
+        "formatString": "Do MMM YYYY",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "code",
+      "num",
+      "bkd",
+      "points",
+      "val",
+      "terminal",
+      "redeemTerminal",
+      "gamePlay",
+      "game"
+    ],
+    "key": "GamePurchase",
+    "label": "Game Purchases",
+    "nameField": null,
+    "nameFieldIsFormHeader": false,
+    "nameIsVirtual": false,
+    "namePath": "_id",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "game-purchases",
+    "perPage": 100,
+    "plural": "Game Purchases",
+    "searchFields": "__name__",
+    "singular": "Game Purchase",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "code"
+      },
+      {
+        "type": "field",
+        "field": "num"
+      },
+      {
+        "type": "field",
+        "field": "bkd"
+      },
+      {
+        "type": "field",
+        "field": "points"
+      },
+      {
+        "type": "field",
+        "field": "val"
+      },
+      {
+        "type": "heading",
+        "content": "Settings",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "terminal"
+      },
+      {
+        "type": "field",
+        "field": "redeemTerminal"
+      },
+      {
+        "type": "field",
+        "field": "gamePlay"
+      },
+      {
+        "type": "field",
+        "field": "game"
+      },
+      {
+        "type": "field",
+        "field": "isRedeemed"
+      },
+      {
+        "type": "field",
+        "field": "isCancelled"
+      },
+      {
+        "type": "field",
+        "field": "redeemedAt"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "GamePurchaseWin": {
+    "autocreate": false,
+    "defaultColumns": "num, points, peps, game, gamPlay, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "num": {
+        "path": "num",
+        "type": "text",
+        "label": "Num",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "points": {
+        "path": "points",
+        "type": "number",
+        "label": "Points",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "peps": {
+        "path": "peps",
+        "type": "number",
+        "label": "Peps",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "gamePlay": {
+        "path": "gamePlay",
+        "paths": {
+          "refList": "gamePlayRefList"
+        },
+        "type": "relationship",
+        "label": "Game Play",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game Play",
+          "plural": "Game Plays",
+          "path": "game-plays",
+          "key": "GamePlay"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "game": {
+        "path": "game",
+        "paths": {
+          "refList": "gameRefList"
+        },
+        "type": "relationship",
+        "label": "Game",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game",
+          "plural": "Games",
+          "path": "games",
+          "key": "Game"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "num",
+      "points",
+      "peps",
+      "gamePlay",
+      "game"
+    ],
+    "key": "GamePurchaseWin",
+    "label": "Game Purchase Wins",
+    "nameField": null,
+    "nameFieldIsFormHeader": false,
+    "nameIsVirtual": false,
+    "namePath": "_id",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "game-purchase-wins",
+    "perPage": 100,
+    "plural": "Game Purchase Wins",
+    "searchFields": "__name__",
+    "singular": "Game Purchase Win",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "num"
+      },
+      {
+        "type": "field",
+        "field": "points"
+      },
+      {
+        "type": "field",
+        "field": "peps"
+      },
+      {
+        "type": "heading",
+        "content": "Settings",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "gamePlay"
+      },
+      {
+        "type": "field",
+        "field": "game"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "GameWiseReport": {
+    "autocreate": false,
+    "defaultColumns": "date,game,totalBet,totalPayout,totalProfit,totalGamePlays",
+    "defaultSort": "-date",
+    "fields": {
+      "date": {
+        "path": "date",
+        "type": "date",
+        "label": "Date",
+        "size": "medium",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "formatString": "Do MMM YYYY",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "game": {
+        "path": "game",
+        "paths": {
+          "refList": "gameRefList"
+        },
+        "type": "relationship",
+        "label": "Game",
+        "size": "full",
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game",
+          "plural": "Games",
+          "path": "games",
+          "key": "Game"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "role": {
+        "path": "role",
+        "paths": {
+          "data": "roleData",
+          "label": "roleLabel",
+          "options": "roleOptions",
+          "map": "roleOptionsMap"
+        },
+        "type": "select",
+        "label": "Role",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "ops": [
+          {
+            "value": "Company",
+            "label": "Company"
+          },
+          {
+            "value": "Operator",
+            "label": "Operator"
+          },
+          {
+            "value": "Super Stockist",
+            "label": "Super Stockist"
+          },
+          {
+            "value": "Stockist",
+            "label": "Stockist"
+          },
+          {
+            "value": "Retailer",
+            "label": "Retailer"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "operator": {
+        "path": "operator",
+        "paths": {
+          "refList": "operatorRefList"
+        },
+        "type": "relationship",
+        "label": "Operator",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "dependsOn": {
+          "role": "Operator"
+        },
+        "isValid": true,
+        "refList": {
+          "singular": "Operator",
+          "plural": "Operators",
+          "path": "operators",
+          "key": "Operator"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "superStockist": {
+        "path": "superStockist",
+        "paths": {
+          "refList": "superStockistRefList"
+        },
+        "type": "relationship",
+        "label": "Super Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "dependsOn": {
+          "role": "Super Stockist"
+        },
+        "isValid": true,
+        "refList": {
+          "singular": "Super Stockist",
+          "plural": "Super Stockists",
+          "path": "super-stockists",
+          "key": "SuperStockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "stockist": {
+        "path": "stockist",
+        "paths": {
+          "refList": "stockistRefList"
+        },
+        "type": "relationship",
+        "label": "Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "dependsOn": {
+          "role": "Stockist"
+        },
+        "isValid": true,
+        "refList": {
+          "singular": "Stockist",
+          "plural": "Stockists",
+          "path": "stockists",
+          "key": "Stockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "retailer": {
+        "path": "retailer",
+        "paths": {
+          "refList": "retailerRefList"
+        },
+        "type": "relationship",
+        "label": "Retailer",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "dependsOn": {
+          "role": "Retailer"
+        },
+        "isValid": true,
+        "refList": {
+          "singular": "Retailer",
+          "plural": "Retailers",
+          "path": "retailers",
+          "key": "Retailer"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalBet": {
+        "path": "totalBet",
+        "type": "number",
+        "label": "Total Bet",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalPayout": {
+        "path": "totalPayout",
+        "type": "number",
+        "label": "Total Payout",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalProfit": {
+        "path": "totalProfit",
+        "type": "number",
+        "label": "Total Profit",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalCommission": {
+        "path": "totalCommission",
+        "type": "number",
+        "label": "Total Commission",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalGamePlays": {
+        "path": "totalGamePlays",
+        "type": "number",
+        "label": "Total Game Plays",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "date",
+      "role",
+      "operator",
+      "superStockist",
+      "stockist",
+      "retailer"
+    ],
+    "key": "GameWiseReport",
+    "label": "Game Wise Reports",
+    "nameField": {
+      "path": "date",
+      "type": "date",
+      "label": "Date",
+      "size": "medium",
+      "initial": true,
+      "required": true,
+      "noedit": true,
+      "formatString": "Do MMM YYYY",
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": false,
+    "nameIsInitial": false,
+    "nameIsVirtual": false,
+    "namePath": "date",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "game-wise-reports",
+    "perPage": 100,
+    "plural": "Game Wise Reports",
+    "searchFields": "__name__",
+    "singular": "Game Wise Report",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "date"
+      },
+      {
+        "type": "field",
+        "field": "game"
+      },
+      {
+        "type": "heading",
+        "content": "Cohort Info",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "role"
+      },
+      {
+        "type": "field",
+        "field": "operator"
+      },
+      {
+        "type": "field",
+        "field": "superStockist"
+      },
+      {
+        "type": "field",
+        "field": "stockist"
+      },
+      {
+        "type": "field",
+        "field": "retailer"
+      },
+      {
+        "type": "heading",
+        "content": "Stats",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "totalBet"
+      },
+      {
+        "type": "field",
+        "field": "totalPayout"
+      },
+      {
+        "type": "field",
+        "field": "totalProfit"
+      },
+      {
+        "type": "field",
+        "field": "totalCommission"
+      },
+      {
+        "type": "field",
+        "field": "totalGamePlays"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "Operator": {
+    "autocreate": false,
+    "defaultColumns": "name, username, isActive, credits, updatedAt, updatedBy, createdAt, createdBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "name": {
+        "path": "name",
+        "type": "text",
+        "label": "Name",
+        "size": "full",
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "username": {
+        "path": "username",
+        "type": "text",
+        "label": "Username",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "password": {
+        "path": "password",
+        "paths": {
+          "confirm": "password_confirm",
+          "hash": "password_hash"
+        },
+        "type": "password",
+        "label": "Password",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "nosort": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "initialCredits": {
+        "path": "initialCredits",
+        "type": "number",
+        "label": "Initial Credits",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "isActive": {
+        "path": "isActive",
+        "type": "boolean",
+        "label": "Is Active",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": true
+      },
+      "credits": {
+        "path": "credits",
+        "type": "number",
+        "label": "Credits",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": 0
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "username",
+      "password",
+      "initialCredits",
+      "isActive"
+    ],
+    "key": "Operator",
+    "label": "Operators",
+    "nameField": {
+      "path": "name",
+      "type": "text",
+      "label": "Name",
+      "size": "full",
+      "required": true,
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": true,
+    "nameIsInitial": true,
+    "nameIsVirtual": false,
+    "namePath": "name",
+    "nocreate": false,
+    "nodelete": false,
+    "noedit": false,
+    "path": "operators",
+    "perPage": 100,
+    "plural": "Operators",
+    "searchFields": "__name__",
+    "singular": "Operator",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "name"
+      },
+      {
+        "type": "field",
+        "field": "username"
+      },
+      {
+        "type": "field",
+        "field": "password"
+      },
+      {
+        "type": "field",
+        "field": "initialCredits"
+      },
+      {
+        "type": "field",
+        "field": "isActive"
+      },
+      {
+        "type": "heading",
+        "content": "Summary",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "credits"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "ReportedError": {
+    "autocreate": false,
+    "defaultColumns": "createdAt, source, agent, description, updatedAt",
+    "defaultSort": "__default__",
+    "fields": {
+      "source": {
+        "path": "source",
+        "type": "text",
+        "label": "Source",
+        "size": "full",
+        "required": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "description": {
+        "path": "description",
+        "type": "textarea",
+        "label": "Description",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "height": 90,
+        "multiline": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "isComplete": {
+        "path": "isComplete",
+        "type": "boolean",
+        "label": "Is Complete",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": false
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "description"
+    ],
+    "key": "ReportedError",
+    "label": "Reported Errors",
+    "nameField": null,
+    "nameFieldIsFormHeader": false,
+    "nameIsVirtual": false,
+    "namePath": "_id",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "reported-errors",
+    "perPage": 100,
+    "plural": "Reported Errors",
+    "searchFields": "__name__",
+    "singular": "Reported Error",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "source"
+      },
+      {
+        "type": "field",
+        "field": "description"
+      },
+      {
+        "type": "field",
+        "field": "isComplete"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "Retailer": {
+    "autocreate": false,
+    "defaultColumns": "name, isActive, game, credits, operator, superStockist, stockist, terminal, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "name": {
+        "path": "name",
+        "type": "text",
+        "label": "Name",
+        "size": "full",
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "username": {
+        "path": "username",
+        "type": "text",
+        "label": "Username",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "password": {
+        "path": "password",
+        "paths": {
+          "confirm": "password_confirm",
+          "hash": "password_hash"
+        },
+        "type": "password",
+        "label": "Password",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "nosort": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "operator": {
+        "path": "operator",
+        "paths": {
+          "refList": "operatorRefList"
+        },
+        "type": "relationship",
+        "label": "Operator",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Operator",
+          "plural": "Operators",
+          "path": "operators",
+          "key": "Operator"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "superStockist": {
+        "path": "superStockist",
+        "paths": {
+          "refList": "superStockistRefList"
+        },
+        "type": "relationship",
+        "label": "Super Stockist",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "isValid": true,
+        "filters": {
+          "operator": ":operator"
+        },
+        "refList": {
+          "singular": "Super Stockist",
+          "plural": "Super Stockists",
+          "path": "super-stockists",
+          "key": "SuperStockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "stockist": {
+        "path": "stockist",
+        "paths": {
+          "refList": "stockistRefList"
+        },
+        "type": "relationship",
+        "label": "Stockist",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "isValid": true,
+        "filters": {
+          "superStockist": ":superStockist"
+        },
+        "refList": {
+          "singular": "Stockist",
+          "plural": "Stockists",
+          "path": "stockists",
+          "key": "Stockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "initialCredits": {
+        "path": "initialCredits",
+        "type": "number",
+        "label": "Initial Credits",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "commission": {
+        "path": "commission",
+        "type": "number",
+        "label": "Commission",
+        "size": "small",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": 5
+      },
+      "isActive": {
+        "path": "isActive",
+        "type": "boolean",
+        "label": "Is Active",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": true
+      },
+      "terminal": {
+        "path": "terminal",
+        "paths": {
+          "refList": "terminalRefList"
+        },
+        "type": "relationship",
+        "label": "Terminal",
+        "size": "full",
+        "initial": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Terminal",
+          "plural": "Terminals",
+          "path": "terminals",
+          "key": "Terminal"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "game": {
+        "path": "game",
+        "paths": {
+          "refList": "gameRefList"
+        },
+        "type": "relationship",
+        "label": "Game",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game",
+          "plural": "Games",
+          "path": "games",
+          "key": "Game"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "credits": {
+        "path": "credits",
+        "type": "number",
+        "label": "Credits",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": 0
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "username",
+      "password",
+      "operator",
+      "superStockist",
+      "stockist",
+      "initialCredits",
+      "commission",
+      "isActive",
+      "terminal",
+      "game"
+    ],
+    "key": "Retailer",
+    "label": "Retailers",
+    "nameField": {
+      "path": "name",
+      "type": "text",
+      "label": "Name",
+      "size": "full",
+      "required": true,
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": true,
+    "nameIsInitial": true,
+    "nameIsVirtual": false,
+    "namePath": "name",
+    "nocreate": false,
+    "nodelete": false,
+    "noedit": false,
+    "path": "retailers",
+    "perPage": 100,
+    "plural": "Retailers",
+    "searchFields": "__name__",
+    "singular": "Retailer",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "name"
+      },
+      {
+        "type": "field",
+        "field": "username"
+      },
+      {
+        "type": "field",
+        "field": "password"
+      },
+      {
+        "type": "field",
+        "field": "operator"
+      },
+      {
+        "type": "field",
+        "field": "superStockist"
+      },
+      {
+        "type": "field",
+        "field": "stockist"
+      },
+      {
+        "type": "field",
+        "field": "initialCredits"
+      },
+      {
+        "type": "field",
+        "field": "commission"
+      },
+      {
+        "type": "field",
+        "field": "isActive"
+      },
+      {
+        "type": "heading",
+        "content": "Hardware",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "terminal"
+      },
+      {
+        "type": "heading",
+        "content": "Summary",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "game"
+      },
+      {
+        "type": "field",
+        "field": "credits"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "RetailerDayWiseReport": {
+    "autocreate": false,
+    "defaultColumns": "date,role,retailer,mPts,fPts,gp,bal,cancel,totalPtsColl",
+    "defaultSort": "-date",
+    "fields": {
+      "date": {
+        "path": "date",
+        "type": "date",
+        "label": "Date",
+        "size": "medium",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "formatString": "Do MMM YYYY",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "day": {
+        "path": "day",
+        "type": "number",
+        "label": "Day",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "month": {
+        "path": "month",
+        "type": "number",
+        "label": "Month",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "year": {
+        "path": "year",
+        "type": "number",
+        "label": "Year",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "role": {
+        "path": "role",
+        "paths": {
+          "data": "roleData",
+          "label": "roleLabel",
+          "options": "roleOptions",
+          "map": "roleOptionsMap"
+        },
+        "type": "select",
+        "label": "Role",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "ops": [
+          {
+            "value": "Company",
+            "label": "Company"
+          },
+          {
+            "value": "Operator",
+            "label": "Operator"
+          },
+          {
+            "value": "Super Stockist",
+            "label": "Super Stockist"
+          },
+          {
+            "value": "Stockist",
+            "label": "Stockist"
+          },
+          {
+            "value": "Retailer",
+            "label": "Retailer"
+          }
+        ],
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "operator": {
+        "path": "operator",
+        "paths": {
+          "refList": "operatorRefList"
+        },
+        "type": "relationship",
+        "label": "Operator",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Operator",
+          "plural": "Operators",
+          "path": "operators",
+          "key": "Operator"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "superStockist": {
+        "path": "superStockist",
+        "paths": {
+          "refList": "superStockistRefList"
+        },
+        "type": "relationship",
+        "label": "Super Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Super Stockist",
+          "plural": "Super Stockists",
+          "path": "super-stockists",
+          "key": "SuperStockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "stockist": {
+        "path": "stockist",
+        "paths": {
+          "refList": "stockistRefList"
+        },
+        "type": "relationship",
+        "label": "Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Stockist",
+          "plural": "Stockists",
+          "path": "stockists",
+          "key": "Stockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "retailer": {
+        "path": "retailer",
+        "paths": {
+          "refList": "retailerRefList"
+        },
+        "type": "relationship",
+        "label": "Retailer",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Retailer",
+          "plural": "Retailers",
+          "path": "retailers",
+          "key": "Retailer"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "terminal": {
+        "path": "terminal",
+        "paths": {
+          "refList": "terminalRefList"
+        },
+        "type": "relationship",
+        "label": "Terminal",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Terminal",
+          "plural": "Terminals",
+          "path": "terminals",
+          "key": "Terminal"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "mPts": {
+        "path": "mPts",
+        "type": "number",
+        "label": "M.Pts",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "fPts": {
+        "path": "fPts",
+        "type": "number",
+        "label": "F.Pts",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "gp": {
+        "path": "gp",
+        "type": "number",
+        "label": "G.P",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "bal": {
+        "path": "bal",
+        "type": "number",
+        "label": "Bal",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "cancel": {
+        "path": "cancel",
+        "type": "number",
+        "label": "Cancel",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalPtsColl": {
+        "path": "totalPtsColl",
+        "type": "number",
+        "label": "Total Pts Coll",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "date",
+      "role",
+      "operator",
+      "superStockist",
+      "stockist",
+      "retailer",
+      "terminal"
+    ],
+    "key": "RetailerDayWiseReport",
+    "label": "Retailer Day Wise Reports",
+    "nameField": {
+      "path": "retailer",
+      "paths": {
+        "refList": "retailerRefList"
+      },
+      "type": "relationship",
+      "label": "Retailer",
+      "size": "full",
+      "initial": true,
+      "noedit": true,
+      "isValid": true,
+      "refList": {
+        "singular": "Retailer",
+        "plural": "Retailers",
+        "path": "retailers",
+        "key": "Retailer"
+      },
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": false,
+    "nameIsInitial": false,
+    "nameIsVirtual": false,
+    "namePath": "retailer",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "retailer-day-wise-reports",
+    "perPage": 100,
+    "plural": "Retailer Day Wise Reports",
+    "searchFields": "__name__",
+    "singular": "Retailer Day Wise Report",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "date"
+      },
+      {
+        "type": "field",
+        "field": "day"
+      },
+      {
+        "type": "field",
+        "field": "month"
+      },
+      {
+        "type": "field",
+        "field": "year"
+      },
+      {
+        "type": "heading",
+        "content": "Cohort Info",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "role"
+      },
+      {
+        "type": "field",
+        "field": "operator"
+      },
+      {
+        "type": "field",
+        "field": "superStockist"
+      },
+      {
+        "type": "field",
+        "field": "stockist"
+      },
+      {
+        "type": "field",
+        "field": "retailer"
+      },
+      {
+        "type": "field",
+        "field": "terminal"
+      },
+      {
+        "type": "heading",
+        "content": "Stats",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "mPts"
+      },
+      {
+        "type": "field",
+        "field": "fPts"
+      },
+      {
+        "type": "field",
+        "field": "gp"
+      },
+      {
+        "type": "field",
+        "field": "bal"
+      },
+      {
+        "type": "field",
+        "field": "cancel"
+      },
+      {
+        "type": "field",
+        "field": "totalPtsColl"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "Stockist": {
+    "autocreate": false,
+    "defaultColumns": "name, isActive, game, credits, operator, superStockist, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "name": {
+        "path": "name",
+        "type": "text",
+        "label": "Name",
+        "size": "full",
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "username": {
+        "path": "username",
+        "type": "text",
+        "label": "Username",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "password": {
+        "path": "password",
+        "paths": {
+          "confirm": "password_confirm",
+          "hash": "password_hash"
+        },
+        "type": "password",
+        "label": "Password",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "nosort": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "operator": {
+        "path": "operator",
+        "paths": {
+          "refList": "operatorRefList"
+        },
+        "type": "relationship",
+        "label": "Operator",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Operator",
+          "plural": "Operators",
+          "path": "operators",
+          "key": "Operator"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "superStockist": {
+        "path": "superStockist",
+        "paths": {
+          "refList": "superStockistRefList"
+        },
+        "type": "relationship",
+        "label": "Super Stockist",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "isValid": true,
+        "filters": {
+          "operator": ":operator"
+        },
+        "refList": {
+          "singular": "Super Stockist",
+          "plural": "Super Stockists",
+          "path": "super-stockists",
+          "key": "SuperStockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "initialCredits": {
+        "path": "initialCredits",
+        "type": "number",
+        "label": "Initial Credits",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "isActive": {
+        "path": "isActive",
+        "type": "boolean",
+        "label": "Is Active",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": true
+      },
+      "game": {
+        "path": "game",
+        "paths": {
+          "refList": "gameRefList"
+        },
+        "type": "relationship",
+        "label": "Game",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game",
+          "plural": "Games",
+          "path": "games",
+          "key": "Game"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "credits": {
+        "path": "credits",
+        "type": "number",
+        "label": "Credits",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": 0
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "username",
+      "password",
+      "operator",
+      "superStockist",
+      "initialCredits",
+      "isActive",
+      "game"
+    ],
+    "key": "Stockist",
+    "label": "Stockists",
+    "nameField": {
+      "path": "name",
+      "type": "text",
+      "label": "Name",
+      "size": "full",
+      "required": true,
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": true,
+    "nameIsInitial": true,
+    "nameIsVirtual": false,
+    "namePath": "name",
+    "nocreate": false,
+    "nodelete": false,
+    "noedit": false,
+    "path": "stockists",
+    "perPage": 100,
+    "plural": "Stockists",
+    "searchFields": "__name__",
+    "singular": "Stockist",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "name"
+      },
+      {
+        "type": "field",
+        "field": "username"
+      },
+      {
+        "type": "field",
+        "field": "password"
+      },
+      {
+        "type": "field",
+        "field": "operator"
+      },
+      {
+        "type": "field",
+        "field": "superStockist"
+      },
+      {
+        "type": "field",
+        "field": "initialCredits"
+      },
+      {
+        "type": "field",
+        "field": "isActive"
+      },
+      {
+        "type": "heading",
+        "content": "Summary",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "game"
+      },
+      {
+        "type": "field",
+        "field": "credits"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "SuperStockist": {
+    "autocreate": false,
+    "defaultColumns": "name, isActive, game, operator, credits, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "name": {
+        "path": "name",
+        "type": "text",
+        "label": "Name",
+        "size": "full",
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "username": {
+        "path": "username",
+        "type": "text",
+        "label": "Username",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "password": {
+        "path": "password",
+        "paths": {
+          "confirm": "password_confirm",
+          "hash": "password_hash"
+        },
+        "type": "password",
+        "label": "Password",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "nosort": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "operator": {
+        "path": "operator",
+        "paths": {
+          "refList": "operatorRefList"
+        },
+        "type": "relationship",
+        "label": "Operator",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Operator",
+          "plural": "Operators",
+          "path": "operators",
+          "key": "Operator"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "initialCredits": {
+        "path": "initialCredits",
+        "type": "number",
+        "label": "Initial Credits",
+        "size": "small",
+        "initial": true,
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "isActive": {
+        "path": "isActive",
+        "type": "boolean",
+        "label": "Is Active",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": true
+      },
+      "game": {
+        "path": "game",
+        "paths": {
+          "refList": "gameRefList"
+        },
+        "type": "relationship",
+        "label": "Game",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Game",
+          "plural": "Games",
+          "path": "games",
+          "key": "Game"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "credits": {
+        "path": "credits",
+        "type": "number",
+        "label": "Credits",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": 0
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "username",
+      "password",
+      "operator",
+      "initialCredits",
+      "isActive",
+      "game"
+    ],
+    "key": "SuperStockist",
+    "label": "Super Stockists",
+    "nameField": {
+      "path": "name",
+      "type": "text",
+      "label": "Name",
+      "size": "full",
+      "required": true,
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": true,
+    "nameIsInitial": true,
+    "nameIsVirtual": false,
+    "namePath": "name",
+    "nocreate": false,
+    "nodelete": false,
+    "noedit": false,
+    "path": "super-stockists",
+    "perPage": 100,
+    "plural": "Super Stockists",
+    "searchFields": "__name__",
+    "singular": "Super Stockist",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "name"
+      },
+      {
+        "type": "field",
+        "field": "username"
+      },
+      {
+        "type": "field",
+        "field": "password"
+      },
+      {
+        "type": "field",
+        "field": "operator"
+      },
+      {
+        "type": "field",
+        "field": "initialCredits"
+      },
+      {
+        "type": "field",
+        "field": "isActive"
+      },
+      {
+        "type": "heading",
+        "content": "Summary",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "game"
+      },
+      {
+        "type": "field",
+        "field": "credits"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "Terminal": {
+    "autocreate": false,
+    "defaultColumns": "mac, retailer, enabled, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "mac": {
+        "path": "mac",
+        "type": "text",
+        "label": "Mac",
+        "size": "full",
+        "initial": true,
+        "required": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "enabled": {
+        "path": "enabled",
+        "type": "boolean",
+        "label": "Enabled",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": true
+      },
+      "debugMode": {
+        "path": "debugMode",
+        "type": "boolean",
+        "label": "Debug Mode",
+        "size": "full",
+        "initial": true,
+        "hasFilterMethod": true,
+        "defaultValue": false
+      },
+      "retailer": {
+        "path": "retailer",
+        "paths": {
+          "refList": "retailerRefList"
+        },
+        "type": "relationship",
+        "label": "Retailer",
+        "size": "full",
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Retailer",
+          "plural": "Retailers",
+          "path": "retailers",
+          "key": "Retailer"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "mac",
+      "enabled",
+      "debugMode"
+    ],
+    "key": "Terminal",
+    "label": "Terminals",
+    "nameField": {
+      "path": "mac",
+      "type": "text",
+      "label": "Mac",
+      "size": "full",
+      "initial": true,
+      "required": true,
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": true,
+    "nameIsInitial": false,
+    "nameIsVirtual": false,
+    "namePath": "mac",
+    "nocreate": false,
+    "nodelete": false,
+    "noedit": false,
+    "path": "terminals",
+    "perPage": 100,
+    "plural": "Terminals",
+    "searchFields": "__name__",
+    "singular": "Terminal",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "mac"
+      },
+      {
+        "type": "field",
+        "field": "enabled"
+      },
+      {
+        "type": "field",
+        "field": "debugMode"
+      },
+      {
+        "type": "heading",
+        "content": "Linked To",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "retailer"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "TerminalDayWiseReport": {
+    "autocreate": false,
+    "defaultColumns": "date,terminal,mPts,fPts,gp,bal,cancel,totalPtsColl",
+    "defaultSort": "-date",
+    "fields": {
+      "date": {
+        "path": "date",
+        "type": "date",
+        "label": "Date",
+        "size": "medium",
+        "initial": true,
+        "required": true,
+        "noedit": true,
+        "formatString": "Do MMM YYYY",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "day": {
+        "path": "day",
+        "type": "number",
+        "label": "Day",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "month": {
+        "path": "month",
+        "type": "number",
+        "label": "Month",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "year": {
+        "path": "year",
+        "type": "number",
+        "label": "Year",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "operator": {
+        "path": "operator",
+        "paths": {
+          "refList": "operatorRefList"
+        },
+        "type": "relationship",
+        "label": "Operator",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Operator",
+          "plural": "Operators",
+          "path": "operators",
+          "key": "Operator"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "superStockist": {
+        "path": "superStockist",
+        "paths": {
+          "refList": "superStockistRefList"
+        },
+        "type": "relationship",
+        "label": "Super Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Super Stockist",
+          "plural": "Super Stockists",
+          "path": "super-stockists",
+          "key": "SuperStockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "stockist": {
+        "path": "stockist",
+        "paths": {
+          "refList": "stockistRefList"
+        },
+        "type": "relationship",
+        "label": "Stockist",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Stockist",
+          "plural": "Stockists",
+          "path": "stockists",
+          "key": "Stockist"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "retailer": {
+        "path": "retailer",
+        "paths": {
+          "refList": "retailerRefList"
+        },
+        "type": "relationship",
+        "label": "Retailer",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Retailer",
+          "plural": "Retailers",
+          "path": "retailers",
+          "key": "Retailer"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "terminal": {
+        "path": "terminal",
+        "paths": {
+          "refList": "terminalRefList"
+        },
+        "type": "relationship",
+        "label": "Terminal",
+        "size": "full",
+        "initial": true,
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Terminal",
+          "plural": "Terminals",
+          "path": "terminals",
+          "key": "Terminal"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "mPts": {
+        "path": "mPts",
+        "type": "number",
+        "label": "M.Pts",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "fPts": {
+        "path": "fPts",
+        "type": "number",
+        "label": "F.Pts",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "gp": {
+        "path": "gp",
+        "type": "number",
+        "label": "G.P",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "bal": {
+        "path": "bal",
+        "type": "number",
+        "label": "Bal",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "cancel": {
+        "path": "cancel",
+        "type": "number",
+        "label": "Cancel",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "totalPtsColl": {
+        "path": "totalPtsColl",
+        "type": "number",
+        "label": "Total Pts Coll",
+        "size": "small",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [
+      "date",
+      "operator",
+      "superStockist",
+      "stockist",
+      "retailer",
+      "terminal"
+    ],
+    "key": "TerminalDayWiseReport",
+    "label": "Terminal Day Wise Reports",
+    "nameField": {
+      "path": "terminal",
+      "paths": {
+        "refList": "terminalRefList"
+      },
+      "type": "relationship",
+      "label": "Terminal",
+      "size": "full",
+      "initial": true,
+      "noedit": true,
+      "isValid": true,
+      "refList": {
+        "singular": "Terminal",
+        "plural": "Terminals",
+        "path": "terminals",
+        "key": "Terminal"
+      },
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": false,
+    "nameIsInitial": false,
+    "nameIsVirtual": false,
+    "namePath": "terminal",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "terminal-day-wise-reports",
+    "perPage": 100,
+    "plural": "Terminal Day Wise Reports",
+    "searchFields": "__name__",
+    "singular": "Terminal Day Wise Report",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "date"
+      },
+      {
+        "type": "field",
+        "field": "day"
+      },
+      {
+        "type": "field",
+        "field": "month"
+      },
+      {
+        "type": "field",
+        "field": "year"
+      },
+      {
+        "type": "heading",
+        "content": "Cohort Info",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "operator"
+      },
+      {
+        "type": "field",
+        "field": "superStockist"
+      },
+      {
+        "type": "field",
+        "field": "stockist"
+      },
+      {
+        "type": "field",
+        "field": "retailer"
+      },
+      {
+        "type": "field",
+        "field": "terminal"
+      },
+      {
+        "type": "heading",
+        "content": "Stats",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "mPts"
+      },
+      {
+        "type": "field",
+        "field": "fPts"
+      },
+      {
+        "type": "field",
+        "field": "gp"
+      },
+      {
+        "type": "field",
+        "field": "bal"
+      },
+      {
+        "type": "field",
+        "field": "cancel"
+      },
+      {
+        "type": "field",
+        "field": "totalPtsColl"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  },
+  "TerminalLog": {
+    "autocreate": false,
+    "defaultColumns": "createdAt, terminal, message, updatedAt, updatedBy",
+    "defaultSort": "__default__",
+    "fields": {
+      "message": {
+        "path": "message",
+        "type": "text",
+        "label": "Message",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "payload": {
+        "path": "payload",
+        "type": "text",
+        "label": "Payload",
+        "size": "full",
+        "noedit": true,
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "terminal": {
+        "path": "terminal",
+        "paths": {
+          "refList": "terminalRefList"
+        },
+        "type": "relationship",
+        "label": "Terminal",
+        "size": "full",
+        "noedit": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Terminal",
+          "plural": "Terminals",
+          "path": "terminals",
+          "key": "Terminal"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdAt": {
+        "path": "createdAt",
+        "paths": {
+          "date": "createdAt_date",
+          "time": "createdAt_time",
+          "tzOffset": "createdAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Created At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "createdBy": {
+        "path": "createdBy",
+        "paths": {
+          "refList": "createdByRefList"
+        },
+        "type": "relationship",
+        "label": "Created By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedAt": {
+        "path": "updatedAt",
+        "paths": {
+          "date": "updatedAt_date",
+          "time": "updatedAt_time",
+          "tzOffset": "updatedAt_tzOffset"
+        },
+        "type": "datetime",
+        "label": "Updated At",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "formatString": "YYYY-MM-DD h:mm:ss a",
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      },
+      "updatedBy": {
+        "path": "updatedBy",
+        "paths": {
+          "refList": "updatedByRefList"
+        },
+        "type": "relationship",
+        "label": "Updated By",
+        "size": "full",
+        "noedit": true,
+        "collapse": true,
+        "isValid": true,
+        "refList": {
+          "singular": "Admin User",
+          "plural": "Admin Users",
+          "path": "admin-users",
+          "key": "AdminUser"
+        },
+        "hasFilterMethod": true,
+        "defaultValue": ""
+      }
+    },
+    "hidden": false,
+    "initialFields": [],
+    "key": "TerminalLog",
+    "label": "Terminal Logs",
+    "nameField": {
+      "path": "createdAt",
+      "paths": {
+        "date": "createdAt_date",
+        "time": "createdAt_time",
+        "tzOffset": "createdAt_tzOffset"
+      },
+      "type": "datetime",
+      "label": "Created At",
+      "size": "full",
+      "noedit": true,
+      "collapse": true,
+      "formatString": "YYYY-MM-DD h:mm:ss a",
+      "hasFilterMethod": true,
+      "defaultValue": ""
+    },
+    "nameFieldIsFormHeader": false,
+    "nameIsInitial": true,
+    "nameIsVirtual": false,
+    "namePath": "createdAt",
+    "nocreate": true,
+    "nodelete": true,
+    "noedit": true,
+    "path": "terminal-logs",
+    "perPage": 100,
+    "plural": "Terminal Logs",
+    "searchFields": "__name__",
+    "singular": "Terminal Log",
+    "sortable": false,
+    "track": true,
+    "tracking": {
+      "createdAt": "createdAt",
+      "createdBy": "createdBy",
+      "updatedAt": "updatedAt",
+      "updatedBy": "updatedBy"
+    },
+    "relationships": {},
+    "uiElements": [
+      {
+        "type": "field",
+        "field": "message"
+      },
+      {
+        "type": "field",
+        "field": "payload"
+      },
+      {
+        "type": "heading",
+        "content": "Linked To",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "terminal"
+      },
+      {
+        "type": "heading",
+        "content": "Meta",
+        "options": {}
+      },
+      {
+        "type": "field",
+        "field": "createdAt"
+      },
+      {
+        "type": "field",
+        "field": "createdBy"
+      },
+      {
+        "type": "field",
+        "field": "updatedAt"
+      },
+      {
+        "type": "field",
+        "field": "updatedBy"
+      }
+    ],
+    "rowButtons": false,
+    "rowButtonsDynamic": false,
+    "hideDrilldown": false,
+    "hideSearchInDrilldown": false
+  }
+}

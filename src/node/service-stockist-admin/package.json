@@ -1,0 +1,43 @@
+{
+  "name": "yantra-admin",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "agenda": "^1.0.3",
+    "agendash": "^0.4.0",
+    "async": "2.1.4",
+    "babel": "^6.23.0",
+    "bcrypt-nodejs": "0.0.3",
+    "cheerio": "^1.0.0-rc.3",
+    "cli-table": "^0.3.1",
+    "cloudinary": "1.7.0",
+    "dotenv": "^4.0.0",
+    "express-handlebars": "3.0.0",
+    "fast-csv": "^2.4.1",
+    "fcm-push": "^1.1.2",
+    "handlebars": "4.0.6",
+    "keystone-email": "1.0.5",
+    "keystone-storage-adapter-s3": "^2.0.0",
+    "lodash": "^4.13.1",
+    "mime-types": "^2.1.20",
+    "moment": "^2.22.2",
+    "mongoose": "^5.1.1",
+    "nodemailer": "^1.4.0",
+    "qrcode-terminal": "^0.10.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "runtime": "^0.14.1",
+    "shelljs": "^0.7.5",
+    "xlsx": "^0.15.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "eslint": "3.15.0",
+    "eslint-config-keystone": "3.0.0",
+    "eslint-plugin-react": "^5.1.1"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node app"
+  }
+}

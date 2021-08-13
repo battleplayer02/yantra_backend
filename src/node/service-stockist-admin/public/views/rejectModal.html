@@ -1,0 +1,66 @@
+<div style="position: fixed;top:0;left:0;right:0;bottom: 0;height: 100%; width: 100%;z-index: 999996;background: rgba(0,0,0,0.6)">
+	&nbsp;
+</div>
+<div style="position: fixed;z-index: 999998;background: white;border-radius: 10px;padding: 15px;top:50%;left:50%;transform: translateX(-50%) translateY(-50%);width: 600px;">
+	<form class="reject-form">
+		<div style="align-items: center; border-bottom: 2px solid #E5E5E5; display: flex; padding-bottom: 10px;">
+			<div style="display: inline-block; flex: 1;"><h4
+					style="font-size: 18px; color: inherit; font-weight: 500; line-height: 1; margin: 0px;">Reject</h4>
+			</div>
+			<button type="button"
+					style="display: inline-block; outline: none; border: 0; text-align: center; color: #999;">
+				<i class="octicon octicon-x close"
+				   style="color: inherit; font-size: 16px; display: inline-block; vertical-align: middle;"></i>
+			</button>
+		</div>
+		<div style="padding: 15px 0; border-bottom: 2px solid #E5E5E5;">
+			<div class="field-type-select" style="display: table; table-layout: fixed; width: 100%;">
+				<label style="display: table-cell; line-height: 2.3em; margin-bottom: 0px; padding-right: 5px; vertical-align: top; width: 150px; color: #7F7F7F; font-size: 1rem; font-weight: normal;">Reject
+					Reason</label>
+				<div class="Select Select--single is-focused is-open is-searchable has-value dropdown-menu">
+					<input type="hidden" name="rejectReason" value="">
+					<div class="Select-control">
+						<span class="Select-multi-value-wrapper">
+							<div class="Select-value">
+								<span class="Select-value-label" role="option">
+									Incorrect Number
+								</span>
+							</div>
+						</span>
+						<span class="Select-arrow-zone">
+							<span class="Select-arrow"></span>
+						</span>
+					</div>
+					<div class="Select-menu-outer dropdown-list" style="display: none;">
+						<div role="listbox" class="Select-menu">
+							<div class="Select-option is-selected" data-value="Incorrect Number">Incorrect Number</div>
+							<div class="Select-option" data-value="Non-Contactable">Non Contactable</div>
+							<div class="Select-option" data-value="Car Sold">Car Sold</div>
+							<div class="Select-option" data-value="Language Issue">Language Issue</div>
+							<div class="Select-option" data-value="Other">Other</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="field-type-select reject-comment-box"
+				 style="display: none; table-layout: fixed; width: 100%; margin-top: 10px;">
+				<label style="display: table-cell; line-height: 2.3em; margin-bottom: 0; padding-right: 5px; vertical-align: top; width: 150px; color: #7F7F7F; font-size: 1rem; font-weight: normal;">Reject
+					Comment</label>
+				<div>
+					<textarea name="rejectComment" autocomplete="off"
+							  style="color: #333; width: 100%; border-color: #b3b3b3 #ccc #d9d9d9; -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;"></textarea>
+				</div>
+			</div>
+		</div>
+		<div style="padding: 15px 0;">
+			<button type="submit"
+					style="cursor: pointer; display: inline-block; font-weight: 400; height: 2.4em; line-height: 2.3em; padding: 0 1em; background: linear-gradient(to bottom, #3ec54a 0%, #2faf3a 100%) #34c240; vertical-align: middle; text-align: center; border-radius: 0.3rem; color: #ffffff; border-width: 1px; border-style: solid; border-color: #2faf3a #2a9b33 #279230;">
+				Submit
+			</button>
+			<button type="button"
+					style="cursor: pointer; display: inline-block; font-weight: 400; height: 2.4em; line-height: 2.3em; padding: 0 1em; vertical-align: middle; text-align: center; color: #999; background: none; border-color: transparent;"
+					class="close">Cancel
+			</button>
+		</div>
+	</form>
+</div>

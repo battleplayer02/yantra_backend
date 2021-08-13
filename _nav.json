@@ -1,0 +1,731 @@
+{
+  "sections": [
+    {
+      "lists": [
+        {
+          "key": "Operator",
+          "label": "Operators",
+          "path": "operators"
+        },
+        {
+          "key": "SuperStockist",
+          "label": "Super Stockists",
+          "path": "super-stockists"
+        },
+        {
+          "key": "Stockist",
+          "label": "Stockists",
+          "path": "stockists"
+        },
+        {
+          "key": "Retailer",
+          "label": "Retailers",
+          "path": "retailers"
+        }
+      ],
+      "label": "Users",
+      "key": "Users"
+    },
+    {
+      "lists": [
+        {
+          "key": "CreditLedgerEntry",
+          "label": "Credit Ledger Entries",
+          "path": "credit-ledger-entries"
+        },
+        {
+          "key": "GameLedgerEntry",
+          "label": "Game Ledger Entries",
+          "path": "game-ledger-entries"
+        }
+      ],
+      "label": "Accounts",
+      "key": "Accounts"
+    },
+    {
+      "lists": [
+        {
+          "key": "Terminal",
+          "label": "Terminals",
+          "path": "terminals"
+        },
+        {
+          "key": "TerminalLog",
+          "label": "Terminal Logs",
+          "path": "terminal-logs"
+        }
+      ],
+      "label": "Hardware",
+      "key": "Hardware"
+    },
+    {
+      "lists": [
+        {
+          "key": "Game",
+          "label": "Games",
+          "path": "games"
+        },
+        {
+          "key": "GamePlay",
+          "label": "Game Plays",
+          "path": "game-plays"
+        }
+      ],
+      "label": "Games",
+      "key": "Games"
+    },
+    {
+      "lists": [
+        {
+          "key": "RetailerDayWiseReport",
+          "label": "Retailer Day Wise Reports",
+          "path": "retailer-day-wise-reports"
+        },
+        {
+          "key": "GamePlayWiseReport",
+          "label": "Game Play Wise Reports",
+          "path": "game-play-wise-reports"
+        },
+        {
+          "key": "TerminalDayWiseReport",
+          "label": "Terminal Day Wise Reports",
+          "path": "terminal-day-wise-reports"
+        },
+        {
+          "key": "GameWiseReport",
+          "label": "Game Wise Reports",
+          "path": "game-wise-reports"
+        },
+        {
+          "key": "GamePurchaseWin",
+          "label": "Game Purchase Wins",
+          "path": "game-purchase-wins"
+        }
+      ],
+      "label": "Reports",
+      "key": "Reports"
+    },
+    {
+      "lists": [
+        {
+          "key": "Config",
+          "label": "Configs",
+          "path": "configs"
+        },
+        {
+          "key": "ConfigChangeHistory",
+          "label": "Config Change Histories",
+          "path": "config-change-histories"
+        },
+        {
+          "key": "ApiClient",
+          "label": "Api Clients",
+          "path": "api-clients"
+        },
+        {
+          "key": "AdminUser",
+          "label": "Admin Users",
+          "path": "admin-users"
+        }
+      ],
+      "label": "System",
+      "key": "System"
+    }
+  ],
+  "by": {
+    "list": {
+      "Operator": {
+        "lists": [
+          {
+            "key": "Operator",
+            "label": "Operators",
+            "path": "operators"
+          },
+          {
+            "key": "SuperStockist",
+            "label": "Super Stockists",
+            "path": "super-stockists"
+          },
+          {
+            "key": "Stockist",
+            "label": "Stockists",
+            "path": "stockists"
+          },
+          {
+            "key": "Retailer",
+            "label": "Retailers",
+            "path": "retailers"
+          }
+        ],
+        "label": "Users",
+        "key": "Users"
+      },
+      "SuperStockist": {
+        "lists": [
+          {
+            "key": "Operator",
+            "label": "Operators",
+            "path": "operators"
+          },
+          {
+            "key": "SuperStockist",
+            "label": "Super Stockists",
+            "path": "super-stockists"
+          },
+          {
+            "key": "Stockist",
+            "label": "Stockists",
+            "path": "stockists"
+          },
+          {
+            "key": "Retailer",
+            "label": "Retailers",
+            "path": "retailers"
+          }
+        ],
+        "label": "Users",
+        "key": "Users"
+      },
+      "Stockist": {
+        "lists": [
+          {
+            "key": "Operator",
+            "label": "Operators",
+            "path": "operators"
+          },
+          {
+            "key": "SuperStockist",
+            "label": "Super Stockists",
+            "path": "super-stockists"
+          },
+          {
+            "key": "Stockist",
+            "label": "Stockists",
+            "path": "stockists"
+          },
+          {
+            "key": "Retailer",
+            "label": "Retailers",
+            "path": "retailers"
+          }
+        ],
+        "label": "Users",
+        "key": "Users"
+      },
+      "Retailer": {
+        "lists": [
+          {
+            "key": "Operator",
+            "label": "Operators",
+            "path": "operators"
+          },
+          {
+            "key": "SuperStockist",
+            "label": "Super Stockists",
+            "path": "super-stockists"
+          },
+          {
+            "key": "Stockist",
+            "label": "Stockists",
+            "path": "stockists"
+          },
+          {
+            "key": "Retailer",
+            "label": "Retailers",
+            "path": "retailers"
+          }
+        ],
+        "label": "Users",
+        "key": "Users"
+      },
+      "CreditLedgerEntry": {
+        "lists": [
+          {
+            "key": "CreditLedgerEntry",
+            "label": "Credit Ledger Entries",
+            "path": "credit-ledger-entries"
+          },
+          {
+            "key": "GameLedgerEntry",
+            "label": "Game Ledger Entries",
+            "path": "game-ledger-entries"
+          }
+        ],
+        "label": "Accounts",
+        "key": "Accounts"
+      },
+      "GameLedgerEntry": {
+        "lists": [
+          {
+            "key": "CreditLedgerEntry",
+            "label": "Credit Ledger Entries",
+            "path": "credit-ledger-entries"
+          },
+          {
+            "key": "GameLedgerEntry",
+            "label": "Game Ledger Entries",
+            "path": "game-ledger-entries"
+          }
+        ],
+        "label": "Accounts",
+        "key": "Accounts"
+      },
+      "Terminal": {
+        "lists": [
+          {
+            "key": "Terminal",
+            "label": "Terminals",
+            "path": "terminals"
+          },
+          {
+            "key": "TerminalLog",
+            "label": "Terminal Logs",
+            "path": "terminal-logs"
+          }
+        ],
+        "label": "Hardware",
+        "key": "Hardware"
+      },
+      "TerminalLog": {
+        "lists": [
+          {
+            "key": "Terminal",
+            "label": "Terminals",
+            "path": "terminals"
+          },
+          {
+            "key": "TerminalLog",
+            "label": "Terminal Logs",
+            "path": "terminal-logs"
+          }
+        ],
+        "label": "Hardware",
+        "key": "Hardware"
+      },
+      "Game": {
+        "lists": [
+          {
+            "key": "Game",
+            "label": "Games",
+            "path": "games"
+          },
+          {
+            "key": "GamePlay",
+            "label": "Game Plays",
+            "path": "game-plays"
+          }
+        ],
+        "label": "Games",
+        "key": "Games"
+      },
+      "GamePlay": {
+        "lists": [
+          {
+            "key": "Game",
+            "label": "Games",
+            "path": "games"
+          },
+          {
+            "key": "GamePlay",
+            "label": "Game Plays",
+            "path": "game-plays"
+          }
+        ],
+        "label": "Games",
+        "key": "Games"
+      },
+      "RetailerDayWiseReport": {
+        "lists": [
+          {
+            "key": "RetailerDayWiseReport",
+            "label": "Retailer Day Wise Reports",
+            "path": "retailer-day-wise-reports"
+          },
+          {
+            "key": "GamePlayWiseReport",
+            "label": "Game Play Wise Reports",
+            "path": "game-play-wise-reports"
+          },
+          {
+            "key": "TerminalDayWiseReport",
+            "label": "Terminal Day Wise Reports",
+            "path": "terminal-day-wise-reports"
+          },
+          {
+            "key": "GameWiseReport",
+            "label": "Game Wise Reports",
+            "path": "game-wise-reports"
+          },
+          {
+            "key": "GamePurchaseWin",
+            "label": "Game Purchase Wins",
+            "path": "game-purchase-wins"
+          }
+        ],
+        "label": "Reports",
+        "key": "Reports"
+      },
+      "GamePlayWiseReport": {
+        "lists": [
+          {
+            "key": "RetailerDayWiseReport",
+            "label": "Retailer Day Wise Reports",
+            "path": "retailer-day-wise-reports"
+          },
+          {
+            "key": "GamePlayWiseReport",
+            "label": "Game Play Wise Reports",
+            "path": "game-play-wise-reports"
+          },
+          {
+            "key": "TerminalDayWiseReport",
+            "label": "Terminal Day Wise Reports",
+            "path": "terminal-day-wise-reports"
+          },
+          {
+            "key": "GameWiseReport",
+            "label": "Game Wise Reports",
+            "path": "game-wise-reports"
+          },
+          {
+            "key": "GamePurchaseWin",
+            "label": "Game Purchase Wins",
+            "path": "game-purchase-wins"
+          }
+        ],
+        "label": "Reports",
+        "key": "Reports"
+      },
+      "TerminalDayWiseReport": {
+        "lists": [
+          {
+            "key": "RetailerDayWiseReport",
+            "label": "Retailer Day Wise Reports",
+            "path": "retailer-day-wise-reports"
+          },
+          {
+            "key": "GamePlayWiseReport",
+            "label": "Game Play Wise Reports",
+            "path": "game-play-wise-reports"
+          },
+          {
+            "key": "TerminalDayWiseReport",
+            "label": "Terminal Day Wise Reports",
+            "path": "terminal-day-wise-reports"
+          },
+          {
+            "key": "GameWiseReport",
+            "label": "Game Wise Reports",
+            "path": "game-wise-reports"
+          },
+          {
+            "key": "GamePurchaseWin",
+            "label": "Game Purchase Wins",
+            "path": "game-purchase-wins"
+          }
+        ],
+        "label": "Reports",
+        "key": "Reports"
+      },
+      "GameWiseReport": {
+        "lists": [
+          {
+            "key": "RetailerDayWiseReport",
+            "label": "Retailer Day Wise Reports",
+            "path": "retailer-day-wise-reports"
+          },
+          {
+            "key": "GamePlayWiseReport",
+            "label": "Game Play Wise Reports",
+            "path": "game-play-wise-reports"
+          },
+          {
+            "key": "TerminalDayWiseReport",
+            "label": "Terminal Day Wise Reports",
+            "path": "terminal-day-wise-reports"
+          },
+          {
+            "key": "GameWiseReport",
+            "label": "Game Wise Reports",
+            "path": "game-wise-reports"
+          },
+          {
+            "key": "GamePurchaseWin",
+            "label": "Game Purchase Wins",
+            "path": "game-purchase-wins"
+          }
+        ],
+        "label": "Reports",
+        "key": "Reports"
+      },
+      "GamePurchaseWin": {
+        "lists": [
+          {
+            "key": "RetailerDayWiseReport",
+            "label": "Retailer Day Wise Reports",
+            "path": "retailer-day-wise-reports"
+          },
+          {
+            "key": "GamePlayWiseReport",
+            "label": "Game Play Wise Reports",
+            "path": "game-play-wise-reports"
+          },
+          {
+            "key": "TerminalDayWiseReport",
+            "label": "Terminal Day Wise Reports",
+            "path": "terminal-day-wise-reports"
+          },
+          {
+            "key": "GameWiseReport",
+            "label": "Game Wise Reports",
+            "path": "game-wise-reports"
+          },
+          {
+            "key": "GamePurchaseWin",
+            "label": "Game Purchase Wins",
+            "path": "game-purchase-wins"
+          }
+        ],
+        "label": "Reports",
+        "key": "Reports"
+      },
+      "Config": {
+        "lists": [
+          {
+            "key": "Config",
+            "label": "Configs",
+            "path": "configs"
+          },
+          {
+            "key": "ConfigChangeHistory",
+            "label": "Config Change Histories",
+            "path": "config-change-histories"
+          },
+          {
+            "key": "ApiClient",
+            "label": "Api Clients",
+            "path": "api-clients"
+          },
+          {
+            "key": "AdminUser",
+            "label": "Admin Users",
+            "path": "admin-users"
+          }
+        ],
+        "label": "System",
+        "key": "System"
+      },
+      "ConfigChangeHistory": {
+        "lists": [
+          {
+            "key": "Config",
+            "label": "Configs",
+            "path": "configs"
+          },
+          {
+            "key": "ConfigChangeHistory",
+            "label": "Config Change Histories",
+            "path": "config-change-histories"
+          },
+          {
+            "key": "ApiClient",
+            "label": "Api Clients",
+            "path": "api-clients"
+          },
+          {
+            "key": "AdminUser",
+            "label": "Admin Users",
+            "path": "admin-users"
+          }
+        ],
+        "label": "System",
+        "key": "System"
+      },
+      "ApiClient": {
+        "lists": [
+          {
+            "key": "Config",
+            "label": "Configs",
+            "path": "configs"
+          },
+          {
+            "key": "ConfigChangeHistory",
+            "label": "Config Change Histories",
+            "path": "config-change-histories"
+          },
+          {
+            "key": "ApiClient",
+            "label": "Api Clients",
+            "path": "api-clients"
+          },
+          {
+            "key": "AdminUser",
+            "label": "Admin Users",
+            "path": "admin-users"
+          }
+        ],
+        "label": "System",
+        "key": "System"
+      },
+      "AdminUser": {
+        "lists": [
+          {
+            "key": "Config",
+            "label": "Configs",
+            "path": "configs"
+          },
+          {
+            "key": "ConfigChangeHistory",
+            "label": "Config Change Histories",
+            "path": "config-change-histories"
+          },
+          {
+            "key": "ApiClient",
+            "label": "Api Clients",
+            "path": "api-clients"
+          },
+          {
+            "key": "AdminUser",
+            "label": "Admin Users",
+            "path": "admin-users"
+          }
+        ],
+        "label": "System",
+        "key": "System"
+      }
+    },
+    "section": {
+      "Users": {
+        "lists": [
+          {
+            "key": "Operator",
+            "label": "Operators",
+            "path": "operators"
+          },
+          {
+            "key": "SuperStockist",
+            "label": "Super Stockists",
+            "path": "super-stockists"
+          },
+          {
+            "key": "Stockist",
+            "label": "Stockists",
+            "path": "stockists"
+          },
+          {
+            "key": "Retailer",
+            "label": "Retailers",
+            "path": "retailers"
+          }
+        ],
+        "label": "Users",
+        "key": "Users"
+      },
+      "Accounts": {
+        "lists": [
+          {
+            "key": "CreditLedgerEntry",
+            "label": "Credit Ledger Entries",
+            "path": "credit-ledger-entries"
+          },
+          {
+            "key": "GameLedgerEntry",
+            "label": "Game Ledger Entries",
+            "path": "game-ledger-entries"
+          }
+        ],
+        "label": "Accounts",
+        "key": "Accounts"
+      },
+      "Hardware": {
+        "lists": [
+          {
+            "key": "Terminal",
+            "label": "Terminals",
+            "path": "terminals"
+          },
+          {
+            "key": "TerminalLog",
+            "label": "Terminal Logs",
+            "path": "terminal-logs"
+          }
+        ],
+        "label": "Hardware",
+        "key": "Hardware"
+      },
+      "Games": {
+        "lists": [
+          {
+            "key": "Game",
+            "label": "Games",
+            "path": "games"
+          },
+          {
+            "key": "GamePlay",
+            "label": "Game Plays",
+            "path": "game-plays"
+          }
+        ],
+        "label": "Games",
+        "key": "Games"
+      },
+      "Reports": {
+        "lists": [
+          {
+            "key": "RetailerDayWiseReport",
+            "label": "Retailer Day Wise Reports",
+            "path": "retailer-day-wise-reports"
+          },
+          {
+            "key": "GamePlayWiseReport",
+            "label": "Game Play Wise Reports",
+            "path": "game-play-wise-reports"
+          },
+          {
+            "key": "TerminalDayWiseReport",
+            "label": "Terminal Day Wise Reports",
+            "path": "terminal-day-wise-reports"
+          },
+          {
+            "key": "GameWiseReport",
+            "label": "Game Wise Reports",
+            "path": "game-wise-reports"
+          },
+          {
+            "key": "GamePurchaseWin",
+            "label": "Game Purchase Wins",
+            "path": "game-purchase-wins"
+          }
+        ],
+        "label": "Reports",
+        "key": "Reports"
+      },
+      "System": {
+        "lists": [
+          {
+            "key": "Config",
+            "label": "Configs",
+            "path": "configs"
+          },
+          {
+            "key": "ConfigChangeHistory",
+            "label": "Config Change Histories",
+            "path": "config-change-histories"
+          },
+          {
+            "key": "ApiClient",
+            "label": "Api Clients",
+            "path": "api-clients"
+          },
+          {
+            "key": "AdminUser",
+            "label": "Admin Users",
+            "path": "admin-users"
+          }
+        ],
+        "label": "System",
+        "key": "System"
+      }
+    }
+  }
+}

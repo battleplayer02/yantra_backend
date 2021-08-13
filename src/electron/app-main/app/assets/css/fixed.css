@@ -1,0 +1,668 @@
+body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+th {
+    font-size: 12px;
+    font-family: "roboto";
+    font-weight: 400;
+    padding: 4px;
+}
+
+td {
+    font-size: 12px;
+    font-family: "roboto";
+    font-weight: 300;
+    padding: 4px;
+}
+
+table.striped tbody tr:nth-child(even) {
+    background: #eee;
+}
+
+table thead tr {
+    background: #aaa;
+}
+
+table {
+    border-spacing: 1px;
+}
+
+select {
+    outline: none;
+    font-size: 12px;
+}
+
+@font-face {
+    font-family: cronus;
+    src: url(../fonts/cronus.otf);
+}
+
+@font-face {
+    font-family: artista-light;
+    src: url(../fonts/arista-light.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-ThinItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-Italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-MediumItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url('../fonts/roboto/Roboto-BlackItalic.ttf') format('truetype');
+}
+
+.fhidden {
+    display: none !important;
+}
+
+/*Splash*/
+#splash {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: black;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+}
+
+#splash #logo_splash {
+    position: absolute;
+    z-index: 1100;
+    margin: auto;
+    animation: anim_logo 15s infinite linear;
+    background-size: contain;
+    background-position: center center;
+    background: url("../img/logo/Images/1.jpg") no-repeat;
+}
+
+.logo_splash {
+    width: 80%;
+    margin: auto;
+    margin-top: 10%;
+    animation: anim_logo 15s infinite linear;
+    background-size: contain;
+    background-position: center center;
+    background: url("../img/logo/Images/1.jpg") no-repeat;
+    height: 80%;
+}
+
+/*
+0-> 90 flip -> 270 switch
+-> 0 -> 90 flip -> 270 switch
+-> 0 -> 90 flip -> 270 switch
+-> 0 -> 90 flip -> 270 switch
+-> 0 -> 90 flip -> 270 switch -> 0
+
+ */
+
+@keyframes anim_logo {
+    0% {
+        transform: rotateY(0deg) scaleX(1);
+        background: url("../img/logo/Images/1.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    5% {
+        transform: rotateY(90deg) scaleX(1);
+        background: url("../img/logo/Images/1.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    5.1% {
+        transform: rotateY(90deg) scaleX(-1);
+        background: url("../img/logo/Images/1.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    15% {
+        transform: rotateY(270deg) scaleX(-1);
+        background: url("../img/logo/Images/1.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    15.1% {
+        transform: rotateY(270deg) scaleX(1);
+        background: url("../img/logo/Images/2.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    20% {
+        transform: rotateY(360deg) scaleX(1);
+        background: url("../img/logo/Images/2.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    20.000000001% {
+        transform: rotateY(0deg) scaleX(1);
+        background: url("../img/logo/Images/2.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    25% {
+        transform: rotateY(90deg) scaleX(1);
+        background: url("../img/logo/Images/2.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    25.1% {
+        transform: rotateY(90deg) scaleX(-1);
+        background: url("../img/logo/Images/2.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    35% {
+        transform: rotateY(270deg) scaleX(-1);
+        background: url("../img/logo/Images/2.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    35.1% {
+        transform: rotateY(270deg) scaleX(1);
+        background: url("../img/logo/Images/3.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    40% {
+        transform: rotateY(360deg) scaleX(1);
+        background: url("../img/logo/Images/3.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    40.000000001% {
+        transform: rotateY(0deg) scaleX(1);
+        background: url("../img/logo/Images/3.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    45% {
+        transform: rotateY(90deg) scaleX(1);
+        background: url("../img/logo/Images/3.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    45.1% {
+        transform: rotateY(90deg) scaleX(-1);
+        background: url("../img/logo/Images/3.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    55% {
+        transform: rotateY(270deg) scaleX(-1);
+        background: url("../img/logo/Images/3.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    55.1% {
+        transform: rotateY(270deg) scaleX(1);
+        background: url("../img/logo/Images/4.jpeg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    60% {
+        transform: rotateY(360deg) scaleX(1);
+        background: url("../img/logo/Images/4.jpeg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    60.000000001% {
+        transform: rotateY(0deg) scaleX(1);
+        background: url("../img/logo/Images/4.jpeg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    65% {
+        transform: rotateY(90deg) scaleX(1);
+        background: url("../img/logo/Images/4.jpeg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    65.1% {
+        transform: rotateY(90deg) scaleX(-1);
+        background: url("../img/logo/Images/4.jpeg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    75% {
+        transform: rotateY(270deg) scaleX(-1);
+        background: url("../img/logo/Images/4.jpeg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    75.1% {
+        transform: rotateY(270deg) scaleX(1);
+        background: url("../img/logo/Images/5.png") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    80% {
+        transform: rotateY(360deg) scaleX(1);
+        background: url("../img/logo/Images/5.png") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    80.000000001% {
+        transform: rotateY(0deg) scaleX(1);
+        background: url("../img/logo/Images/5.png") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    85% {
+        transform: rotateY(90deg) scaleX(1);
+        background: url("../img/logo/Images/5.png") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    85.1% {
+        transform: rotateY(90deg) scaleX(-1);
+        background: url("../img/logo/Images/5.png") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    95% {
+        transform: rotateY(270deg) scaleX(-1);
+        background: url("../img/logo/Images/5.png") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    95.1% {
+        transform: rotateY(270deg) scaleX(1);
+        background: url("../img/logo/Images/1.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    99.9999999% {
+        transform: rotateY(360deg) scaleX(1);
+        background: url("../img/logo/Images/1.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    100% {
+        transform: rotateY(0deg) scaleX(1);
+        background: url("../img/logo/Images/1.jpg") no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+}
+
+.mm_btn {
+    cursor: pointer;
+    background: lightseagreen;
+    font-size: 26px;
+    outline: none;
+    border: 4px outset lightseagreen;
+    font-family: "cronus";
+}
+
+.mm_btn:hover, .mm_btn_hover {
+    background: #14665e;
+    color: white;
+}
+
+.y_btn {
+    cursor: pointer;
+    background: lightseagreen;
+    font-size: 14px;
+    outline: none;
+    border: 2px outset lightseagreen;
+    font-family: "roboto";
+}
+
+.y_btn:hover {
+    background: #14665e;
+    color: white;
+}
+
+.y-dialog {
+    z-index: 2000;
+    border: 2px #555 ridge;
+    position: fixed;
+    background: #bebebe;
+    box-shadow: 3px 2px 6px 0px #7b7b7b;
+    visibility: hidden;
+}
+
+#dialog-backdrop {
+    z-index: 1900;
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.y-dialog .dhead {
+    background: lightseagreen;
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 4px;
+    text-align: center;
+    font-family: "roboto";
+}
+
+.y-dialog .dbtns {
+    padding: 10px;
+    text-align: center;
+}
+
+.y-dialog .dbody {
+    font-size: 14px;
+    padding: 5px;
+    font-family: "roboto";
+    font-weight: 300;
+}
+
+#mm_logo {
+    font-size: 90px;
+    font-family: "artista-light";
+    text-align: center;
+}
+
+#game_emblem {
+    background: url("../img/bgrad-bg.jpg");
+    border: 5px ridge #2aa99c;
+    background-size: cover;
+}
+
+#results_tbl {
+    width: 100%;
+}
+
+#results_tbl td {
+    border: 1px solid black;
+}
+
+#results_tbl .game_num {
+    font-weight: 700;
+    font-family: "roboto";
+    text-align: center;
+    vertical-align: middle;
+}
+
+#results_tbl .win_num {
+    font-weight: 700;
+    font-family: "roboto";
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 150%;
+}
+
+#game_timers table, #game_balance table {
+    width: 100%;
+}
+
+#game_timers td, #game_balance td {
+    text-align: center;
+    vertical-align: middle;
+    font-family: "roboto";
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#game_footer table {
+    width: 100%;
+    height: 100%;
+}
+
+#game_footer td {
+    text-align: center;
+    vertical-align: middle;
+    font-family: "roboto";
+    font-weight: 400;
+    font-size: 14px;
+}
+
+#game_footer table button {
+    width: 100%;
+    cursor: pointer;
+    padding: 5px;
+    color: white;
+    font-size: 14px;
+    /*font-size: 9px;*/
+    outline: none;
+    font-weight: 600;
+}
+
+#game_footer table button.bred {
+    background: red;
+    border: 1px ridge darkred;
+    box-shadow: 1px 1px 1px darkred;
+}
+
+#game_footer table button.bred:hover {
+    background: darkred;
+    color: white;
+}
+
+#game_footer table button.bgreen {
+    background: green;
+    border: 1px ridge darkgreen;
+    box-shadow: 1px 1px 1px darkgreen;
+}
+
+#game_footer table button.bgreen:hover {
+    background: darkgreen;
+    color: white;
+}
+
+#game_footer table button.bblue {
+    background: dodgerblue;
+    border: 1px ridge darkblue;
+    box-shadow: 1px 1px 1px darkblue;
+}
+
+#game_footer table button.bblue:hover {
+    background: darkblue;
+    color: white;
+}
+
+#game_matrix {
+    overflow: hidden;
+}
+
+#game_matrix table {
+    width: 100%;
+    height: 100%;
+}
+
+#game_matrix table td {
+    text-align: center;
+    vertical-align: middle;
+    font-family: "roboto";
+    font-weight: 400;
+    font-size: 12px;
+}
+
+#game_matrix table .matrix_lbl {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+
+#game_matrix table .mat_inp {
+    outline: none;
+    width: 100%;
+    text-align: center;
+}
+
+#game_matrix table .mat_inp:focus, #game_matrix table .mat_inp.highlight {
+    background: #c09853;
+}
+
+#game_matrix table td.mselected .mat_inp {
+    background: black;
+    color: white;
+}
+
+#game_matrix table td.mselected {
+    background: yellow;
+}
+
+#game_matrix table .mat_inp.mspecial {
+    background: #a1ffd9;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.swal2-popup.swal2-modal {
+    zoom: 0.9;
+}
+
+.wificonnected, .wificonnected td {
+    font-weight: bold !important;
+    background: lightgoldenrodyellow;
+}
+
+@media screen and (max-width: 910px), (max-height: 740px) {
+    html {
+        zoom: 0.7;
+    }
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+#game_results::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#game_results {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.tred{
+    color: red !important;
+}
+
+#gspinner-dialog{
+    position: fixed;
+    z-index: 1901;
+    background: #00b3ee;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width: 100%;
+    height:100%;
+    display: none;
+}
+
+.sum_btn {
+    background: green;
+    color: white;
+    width: 80px;
+    margin: 2px;
+    border: 1px solid green;
+    outline: none;
+}
+.sum_btn.sbactive {
+    background: lightgreen;
+    color: black;
+}

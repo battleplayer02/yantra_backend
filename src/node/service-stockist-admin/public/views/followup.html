@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<style>
+		body, html {
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			borer: 0;
+		}
+
+		body, html {
+			overflow-x: hidden;
+			/*background-color: #fafafa;*/
+			height: 100%;
+			margin: 0;
+		}
+
+		.chat-container:before {
+			content: ' ';
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			opacity: 0.3;
+			background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
+			background-repeat: no-repeat;
+			background-position: center;
+			-webkit-background-size: cover;
+			background-size: cover;
+		}
+
+		.chat-container {
+			margin: auto;
+			padding: 0 20px;
+			position: relative;
+			background: #fafafa;
+			overflow: hidden;
+			min-height: 100%;
+			/*overflow-y: scroll;*/
+		}
+
+		.footer {
+			position: fixed;
+			left: 0;
+			cursor: pointer;
+			bottom: 0;
+			right: 0;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			/*background-color: #333;*/
+			background-color: #000;
+			color: #fff;
+			text-align: center;
+			margin: auto;
+			z-index: 3;
+		}
+
+		.item {
+			width: 100%;
+			padding-top: 20px;
+			border-bottom: 1px #CCCCCC;
+		}
+
+		.followup {
+			float: right;
+			color: #000;
+			margin-bottom: 12px;
+			position: relative;
+		}
+
+		.message-out {
+			max-width: 75%;
+			font-size: 14.2px;
+			line-height: 19px;
+			color: #262626;
+			position: relative;
+			z-index: 2;
+
+		}
+
+		.ftr {
+			float: right;
+		}
+
+		.ftl {
+			float: left;
+			padding-bottom: 20px;
+		}
+
+		.message-in {
+			min-width: 110px;
+			box-sizing: border-box;
+		}
+
+		.followup-inner-shape {
+			padding: 6px 7px 8px 9px;
+		}
+
+		.right-bg-box {
+			background-color: #dcf8c6;
+			box-shadow: 0 0px 1px rgba(0, 0, 0, 0.28);
+			border-radius: 7.5px 0 7.5px 7.5px;
+		}
+
+		.left-bg-box {
+			background-color: white;
+			box-shadow: 0 0px 1px rgba(0, 0, 0, 0.28);
+			border-radius: 0 7.5px 7.5px 7.5px;
+		}
+
+		.tail-container.highlight {
+			opacity: 0;
+		}
+
+		.message-out .right-top {
+			position: absolute;
+			width: 25px;
+			height: 20px;
+			left: auto;
+			right: -22px;
+			top: -1px;
+			z-index: 2;
+			background: url(/images/right-top-yello.png) no-repeat right top;
+		}
+
+		.message-out .left-top {
+			position: absolute;
+			width: 25px;
+			height: 20px;
+			left: -22px;
+			top: -1px;
+			z-index: 2;
+			background: url(/images/left-top-white-arrow.png) no-repeat left top;
+		}
+
+		.update-time {
+			font-size: 12px;
+			color: #262626;
+			text-align: right;
+			margin-top: 8px;
+		}
+
+		.abtn {
+			border-radius: 3px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			padding: 5px;
+			border: 1px solid grey;
+			padding-left: 15px;
+			padding-right: 15px;
+			margin: 10px 0 0;
+			float: right;
+		}
+
+		button.cancel.btn.btn-lg.btn-default {
+			display: inline-block;
+			/* background-color: black; */
+			width: 100px;
+			height: 30px;
+			background: #333;
+			opacity: 1;
+			border: 1px solid #000000;
+			color: white;
+		}
+
+		button.confirm.btn.btn-lg.btn-primary {
+			display: inline-block;
+			/* background-color: black; */
+			width: 100px;
+			height: 30px;
+			background: #333;
+			opacity: 1;
+			border: 1px solid #000000;
+			color: white;
+		}
+
+		.abtn-edit {
+			cursor: pointer;
+			background: #333;
+			border: 1px solid #000000;
+			color: white;
+		}
+
+		.clearfix::after {
+			display: block;
+			content: "";
+			clear: both;
+		}
+
+		input.form-control {
+			margin-bottom: 15px;
+			display: block;
+			width: 92%;
+			height: 34px;
+			padding: 6px 12px;
+			font-size: 14px;
+			line-height: 1.42857143;
+			color: #555;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+			-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+		}
+
+		.p5 {
+			padding: 5px;
+		}
+
+		.delete {
+			background: red !important;
+			border: none !important;
+			font-weight: 400;
+			padding: 1px 6px 1px 6px !important;
+		}
+
+	</style>
+	<script src="/js/moment.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+
+	<script>
+		function boot() {
+			$('#source').html('');
+			var id = window.location.href.split('/');
+			$.ajax({
+				url: "/admin/api/getFollowup/" + id[id.length - 2] + '/' + id[id.length - 1],
+				json: true
+			}).then(function (data) {
+				console.log(data);
+				(data || []).forEach(function (value) {
+					console.log(value.type);
+					var child = $('<div class=\'item ' + value.type + '\'></div>');
+
+					function addBr(str) {
+						str = str || '';
+						return str.replace(/\n/ig, '<br/>');
+					}
+
+					switch (value.type) {
+						case 'lead':
+							child.append('<div class="message-out ftl" style="margin-top: 10px;">' +
+									'<div class="followup-inner-shape left-bg-box clearfix">' +
+									'<div class="left-top"></div>' +
+									'<div class="message-in">' + (value.user && value.user.name.first || 'Customer') + ' requested a callback for offer ' + (value.offer && value.offer.name || "(Deleted Offer)") + ' (' + (value.offer && value.offer.subHeading || "") + ')' +
+									'<div class="update-time">Callback Lead : ' + moment(value.createdAt).format('DD/MM/YYYY hh:mm A') + '</div>' +
+									(value.markedAsDoneAt ? ('<div class="update-time">Marked as done at :  ' + moment(value.markedAsDoneAt).format('DD/MM/YYYY hh:mm A') + '</div>') :
+											'<button class="abtn abtn-edit" onclick="markAsDone(\'lead\' , \'' + value._id + '\')">Mark as done</button>') +
+									'</div></div></div>');
+							break;
+						case 'followup':
+							child.append('<div class="message-out ftr"><div class="followup-inner-shape right-bg-box clearfix"><div class="right-top"></div><div class="message-in">' +
+									'<div>Follow up by ' + (value.createdBy && value.createdBy.name && value.createdBy.name.first || 'Unknown Agent') + '</div><div><strong>CallType:</strong> ' + value.callType + '</div><div><strong>Sub Category:</strong> ' + value.subCategory + '</div>' +
+									'<div><strong>Interaction Source:</strong> ' + value.interactionSource + '</div></div><div><strong>Caller Type:</strong> ' + value.callerType + '</div><div><strong>Call Disposition:</strong> ' + value.callDisposition + '</div>' +
+									'<div><strong>Work Done By Agent:</strong> ' + value.workDoneByAgent + '</div>' +
+									'<div><strong>Comments:</strong> ' + addBr(value.comments) + '</div><div><strong>Next Followup:</strong> ' + (value.followupDate && moment(value.followupDate).format('DD/MM/YYYY hh:mm A') || 'n/a') + '</div>' +
+									'<div class="update-time">Followed up at :  ' + moment(value.createdAt).format('DD/MM/YYYY hh:mm A') + '</div>' +
+									'<div class="update-time">' + (value.markedAsDoneAt ? ('<div class="update-time">Marked as done at :  ' + moment(value.markedAsDoneAt).format('DD/MM/YYYY hh:mm A') + '</div>') : '<button class="abtn-edit p5" onclick="markAsDone(false,\'' + value._id + '\')">Mark as done</button>') + '</div>' +
+									'<button style="display:' + (moment(value.createdAt)._d.getTime() < (+new Date() - (30 * 60 * 1000)) ? 'none' : 'inline-block') + '" class="abtn abtn-edit delete" onclick="deleteFollowUp( \'' + value._id + '\')">X</button>' +
+									'</div></div>');
+							break;
+						case 'feedback':
+							child.append('<div class="message-out ftl">' +
+									'<div class="followup-inner-shape left-bg-box clearfix">' +
+									'<div class="left-top"></div>' +
+									'<div class="message-in">feedback : ' + (value.user && value.user.name && value.user.name.first) + " " + (value.user && value.user.name && value.user.name.last) + ' gave feedback for category: ' + (value.category && value.category.name || 'Unknown') + '. <br> ' + addBr(value.feedback) + ' <div class="update-time">Feedback At:  ' + moment(value.createdAt).format('DD/MM/YYYY hh:mm A') + '</div>' +
+									'</div></div></div>');
+							break;
+						case 'refer':
+							child.append('<div class="message-out ftl"><div class="followup-inner-shape left-bg-box">' +
+									'<div class="left-top"></div>' +
+									'<div class="message-in">' + (value.referredBy && value.referredBy.name && value.referredBy.name.first || 'Unknown customer') + ' referred "' + (value.interestedCarModel && value.interestedCarModel.name) + '" to ' + value.title + ' ' + value.name + '.' +
+									'<div class="update-time">Refered At:  ' + moment(value.createdAt).format('DD/MM/YYYY hh:mm A') + '</div></div></div></div>');
+							break;
+						case 'share':
+							child.append('<div class="message-out ftl">' +
+									'<div class="followup-inner-shape left-bg-box">' +
+									'<div class="left-top"></div><div class="message-in">Shared the offer "' + value.offer.name + '" with ' + value.shareTo + '' +
+									'<div class="update-time">Shared At:  ' + moment(value.createdAt).format('DD/MM/YYYY hh:mm A') + '</div></div></div></div>');
+							break;
+						case 'change':
+							child.append('<div class="message-out ftl">' +
+									'<div class="followup-inner-shape left-bg-box" style="border: 1px dashed orange;">' +
+									'<div class="left-top"></div><div class="message-in">' +
+									'<b style="opacity:0.8;text-decoration:underline;">Customer Details Updated</b><br>' +
+									'Agent: <i>' + (value.updatedBy && value.updatedBy.name && ((value.updatedBy.name.first || '') + ' ' + (value.updatedBy.name.last || '')) || 'Unknown') + '</i><br>' +
+									'Changes:<ul style="margin-top: 0;font-size: 12px;">' +
+									(function () {
+										var html = '';
+										for (var cidx = 0; cidx < value.changes.length; cidx++) {
+											var change = value.changes[cidx];
+											var field = change.field;
+											var oldVal = JSON.parse(change.oldVal).val;
+											var newVal = JSON.parse(change.newVal).val;
+											// name check
+											if (newVal && (newVal.first || newVal.last)) {
+												newVal = ((newVal.first || '') + ' ' + (newVal.last || '')).trim();
+											}
+											if (oldVal && (oldVal.first || oldVal.last)) {
+												oldVal = ((oldVal.first || '') + ' ' + (oldVal.last || '')).trim();
+											}
+											if (field.search(/\.(first|last)/i) > -1) {
+												continue;
+											}
+											html += '<li><b>' + field + ':</b> <i style="text-decoration: line-through;color: darkred">' + oldVal + '</i> &rarr; <i style="color: darkgreen;">' + newVal + '</i></li>'
+										}
+										return html;
+									})() +
+									'</ul>' +
+									'<div class="update-time">Updated At: ' + moment(value.createdAt).format('DD/MM/YYYY hh:mm A') + '</div>' +
+									'</div></div></div>');
+							break;
+					}
+					$('#source').append(child);
+				});
+				$("html, body").animate({scrollTop: $(document).height() + 1000}, 500);
+			});
+		}
+
+		$(document).ready(boot);
+
+		function markAsDone(lead, id) {
+			swal({
+				title: "Are you sure, you want to mark this " + (lead ? "lead" : "followup") + " as done?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: '#DD6B55',
+				confirmButtonText: 'Mark as done',
+				cancelButtonText: "No",
+				closeOnConfirm: true,
+				inputPlaceholder: "",
+				closeOnCancel: true
+			}, function (text) {
+				if (text) {
+					swal({
+						title: 'Please Wait!',
+						html: true,
+						text: 'Please wait while we process the data.',
+						showConfirmButton: true,
+						allowEscapeKey: false,
+						allowOutsideClick: false,
+						confirmButtonColor: "#ccc",
+						confirmButtonText: "...",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					});
+
+					swal.disableButtons();
+
+					let data = {}, url = "/admin/api/updateFollowUp/" + id;
+
+					if (lead) {
+						url = "/admin/api/lead/markedAsDoneAt/" + id;
+					}
+					/*else {
+                                           data.comments = (text || '').trim();
+                                       }*/
+
+					$.ajax({
+						url: url,
+						method: "POST",
+						data: data,
+					}).then(function (data) {
+						setTimeout(function () {
+							swal('Success!', "This " + (lead ? "lead" : "followup") + " is marked as done.!", 'success');
+							boot();
+						}, 1000);
+					});
+				}
+			});
+		}
+
+		function deleteFollowUp(id) {
+			if (!id) return;
+
+			swal({
+				title: "Delete Communication?",
+				text: 'Are you sure you want to delete this communication? This can not be reversed.',
+				type: "warning",
+				showCancelButton: true,
+				showConfirmButton: true,
+				confirmButtonColor: '#DD6B55',
+				cancelButtonColor: '#249c4e',
+				confirmButtonText: 'Yes, Delete',
+				cancelButtonText: "No",
+				closeOnConfirm: false,
+				closeOnCancel: true
+			}, function (isConfirm) {
+				if (isConfirm) {
+					swal({
+						title: 'Please Wait!',
+						html: true,
+						text: 'Please wait while we delete this communication.',
+						showConfirmButton: true,
+						allowEscapeKey: false,
+						allowOutsideClick: false,
+						confirmButtonColor: "#ccc",
+						confirmButtonText: "...",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					});
+
+					swal.disableButtons();
+					$.ajax({
+						url: "/admin/api/followups/" + id + "/delete",
+						method: "post",
+						json: true
+					}).then(function (data) {
+						setTimeout(function () {
+							swal('Success!', 'Communication deleted.!', 'success');
+							boot();
+						}, 1000);
+					});
+
+				}
+			});
+		}
+
+	</script>
+</head>
+<body style="">
+<div class="chat-container">
+	<div id="source">
+
+	</div>
+</div>
+
+
+<script>
+	$(window).load(function () {
+		$("html, body").animate({scrollTop: $(document).height() + 1000}, 500);
+	});
+</script>
+</body>
+</html>

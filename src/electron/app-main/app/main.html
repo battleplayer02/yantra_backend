@@ -1,0 +1,335 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lotto! - The Most Advanced Game engine</title>
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />-->
+    <script src="assets/app.js"></script>
+    <script src="assets/js_deps/jquery2.js"></script>
+    <script src="assets/js_deps/jquery.axle.js"></script>
+    <script src="assets/js_deps/vue.js"></script>
+    <script src="assets/js_deps/hotkeys.js"></script>
+    <script src="assets/js_deps/odometer.js"></script>
+
+    <link rel="stylesheet" href="assets/css/fixed.css">
+    <link rel="axle" href="assets/axle/layout.css">
+
+</head>
+<body id="body" class="no-backdrop">
+<!--Man App-->
+<div id="v-app">
+
+    <!--Loader Component : Splash Screen-->
+    <div id="splash">
+        <div id="logo_splash"></div>
+    </div>
+
+    <!--Bulb indicator-->
+    <img v-bind:src="isConnected && terminalIntrim && terminalIntrim.ec ? 'assets/img/bulb_green.png' : 'assets/img/bulb_red.png'" id="bulb" />
+
+    <!--Menu Component-->
+    <div id="main_menu" v-bind:class="{fhidden: terminal}">
+        <div id="mm_logo" data-axle-font-hwf="116,816,90px" data-axle-line-height="{#mm_logo}h100%">YANTRA</div>
+        <button v-on:click="openWifiDialog" class="mm_btn" id="but-1" onmouseleave="jQuery('.mm_btn').removeClass('mm_btn_hover')">Wifi Setup</button>
+        <button v-on:click="openPrinterDialog" class="mm_btn" id="but-2" onmouseleave="jQuery('.mm_btn').removeClass('mm_btn_hover')">Printer Setup</button>
+        <button v-on:click="openRegisterDialog" class="mm_btn" id="but-3" onmouseleave="jQuery('.mm_btn').removeClass('mm_btn_hover')">Register</button>
+        <button v-on:click="openConnectDialog" class="mm_btn" id="but-4" onmouseleave="jQuery('.mm_btn').removeClass('mm_btn_hover')">Connect</button>
+        <button v-on:click="openLoginDialog" class="mm_btn" id="but-5" onmouseleave="jQuery('.mm_btn').removeClass('mm_btn_hover')">Play Game</button>
+        <button v-on:click="openRebootDialog" class="mm_btn" id="but-6" onmouseleave="jQuery('.mm_btn').removeClass('mm_btn_hover')">Reboot</button>
+        <button v-on:click="openShutdownDialog" class="mm_btn" id="but-7" onmouseleave="jQuery('.mm_btn').removeClass('mm_btn_hover')">Shutdown</button>
+    </div>
+    <!--GAME SCREEN-->
+    <div id="game_screen" v-bind:class="{fhidden: !terminal}">
+        <div id="game_logo" data-axle-font-hwf="77,227,70px" data-axle-line-height="{#game_logo}h100%" data-axle-left="w50% - {#game_logo}w50%">YANTRA</div>
+        <div id="game_timers">
+            <table>
+                <tbody>
+                <tr>
+                    <td id="gift_code_box">Gift Event Code<br/>{{gamePlay ? gamePlay.code : 'Loading...'}}</td>
+                    <td id="timer_box" v-bind:class="{tred: !gcanBuy}">Countdown<br />{{ctdn}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="game_balance">
+            <table>
+                <tbody>
+                <tr>
+                    <td id="balance_box">Credits<br/>{{gCredits ? gCredits : 'Loading...'}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="game_emblem"><div class="logo_splash"></div></div>
+        <div id="game_results">
+            <table id="results_tbl">
+                <tbody>
+                <tr v-for="play in gPlays">
+                    <td class="game_num" v-if="play.l" colspan="2">
+                        <div style="background: yellow;border: 3px solid magenta;margin: 5px;border-radius: 20px;padding: 10px;outline: none;">
+                            <div style="color: red;font-size: 40px;">{{play.l.winner}}</div>
+                            <hr>
+                            <div style="font-weight: bold;font-size: 14px;">{{play.l.code}}</div>
+                            <div style="font-size: 12px;color: gray;">{{play.l.time}}</div>
+                        </div>
+                    </td>
+                    <!--<td class="win_num" v-if="play.l">{{play.l.winner}}</td>-->
+                    <td class="game_num" v-if="play.r" colspan="2">
+                        <div style="background: yellow;border: 3px solid magenta;margin: 5px;border-radius: 20px;padding: 10px;outline: none;">
+                            <div style="color: red;font-size: 40px;">{{play.r.winner}}</div>
+                            <hr>
+                            <div style="font-weight: bold;font-size: 14px;">{{play.r.code}}</div>
+                            <div style="font-size: 12px;color: gray;">{{play.r.time}}</div>
+                        </div>
+                    </td>
+                    <td class="game_num" v-if="play.rr" colspan="2">
+                        <div style="background: yellow;border: 3px solid magenta;margin: 5px;border-radius: 20px;padding: 10px;outline: none;">
+                            <div style="color: red;font-size: 40px;">{{play.rr.winner}}</div>
+                            <hr>
+                            <div style="font-weight: bold;font-size: 14px;">{{play.rr.code}}</div>
+                            <div style="font-size: 12px;color: gray;">{{play.rr.time}}</div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="game_footer">
+            <table>
+                <tbody>
+                <tr>
+                    <td><button class="bgreen">Yantra</button></td>
+                    <td style="font-weight: bold">{{getPrintTid()}}</td>
+                    <td style="font-weight: bold">{{curtime}}</td>
+                    <td></td>
+                    <td>
+                        P: <input type="text" disabled="disabled" value="0" style="width: 50px" v-bind:value="sumPoints()">
+                        V: <input type="text" disabled="disabled" value="0" style="width: 50px" v-bind:value="sumValue()">
+                    </td>
+                    <td style="text-align: right;font-weight: 600;vertical-align: middle">Bar Code (F8)</td>
+                    <td>
+                        <form v-on:submit="doRedeem"><input v-on:keydown="inputKeyDown($event, currCell.row, currCell.col, {}, true)" type="text" placeholder="Enter code" id="redeem_input" style="width: 100%"></form><button style="display: none" type="submit"></button></td>
+                </tr>
+                <tr>
+                    <td><button class="bred" v-on:click="doPurchase">Buy (F6)</button></td>
+                    <td><button class="bblue" v-on:click="resetSelectMatrix">Clear (F5)</button></td>
+                    <td><button class="bblue" v-on:click="cancelPurchase">Can. Rec. (F9)</button></td>
+                    <td><button class="bblue" v-on:click="lastRecipt">Last Receipt (F10)</button></td>
+                    <td><button class="bred" v-on:click="confirmExit">Exit (F3)</button></td>
+                    <td><button class="bblue" v-on:click="purchaseDetails">Purchase Details (F4)</button></td>
+                    <td><button class="bblue" v-on:click="showGameVersion">Yantra (F7)</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="game_matrix">
+            <table>
+                <tbody>
+                <tr v-for="(r,rdx) of selectMatrix">
+                    <td v-for="(c,cdx) of r.cols" v-bind:class="{mselected: c.selected || c.val > 0}">
+                        <span class="matrix_lbl">{{c.label}}</span><br />
+                        <input type="number" step="1" v-model="c.val" v-on:focus="inputFocus($event, rdx, cdx, c)" v-on:keydown="inputKeyDown($event, rdx, cdx, c)" v-on:keyup="inputKeyUp($event, rdx, cdx, c)" class="mat_inp" v-bind:data-row="rdx" v-bind:data-col="cdx" v-bind:class="['mat_inp_' + rdx + '_' + cdx, c.special ? 'mspecial' : '', highlight[c.num] ? 'highlight' : '']">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--<div id="game_emblem_txt" data-axle-font-hwf="52,254,14px">TO GET YANTRA<br/>Choose Your Product Code</div>-->
+    </div>
+
+    <!--Dialogues-->
+    <div v-if="activeDialog" id="dialog-backdrop">&nbsp;</div>
+    <!--PLAY BLOCK-->
+    <div v-if="activeDialog == 'nobuy'" id="nobuy-dialog" class="y-dialog" style="width: 300px;"
+         data-axle-left="(w100% / 2) - 150"
+         data-axle-top="(h100% / 2) - ({#nobuy-dialog}h100% / 2)">
+        <div class="dhead">Please Wait</div>
+        <div class="dbody">
+            Can not buy the ticket while the draw closes.
+        </div>
+    </div>
+    <div v-bind:style="{display: activeDialog == 'gspinner' || activeDialog == 'gresult' ? 'block' : 'none'}" id="gspinner-dialog">
+        <!--Blue Spinner-->
+        <div style="font-size: 50px;font-weight: bold;color: yellow;padding: 15px;background: red;border: 10px yellow inset;width: fit-content;margin: auto;position: relative;transform: translateY(-50%);top: 50%;">{{ctrN}}</div>
+
+    </div>
+    <!--<div v-if="activeDialog == 'gresult'" id="gresult-dialog" class="y-dialog" style="width: 300px;"-->
+         <!--data-axle-left="(w100% / 2) - 150"-->
+         <!--data-axle-top="(h100% / 2) - ({#gresult-dialog}h100% / 2)">-->
+        <!--<div class="dhead">WINNER</div>-->
+        <!--<div class="dbody" style="text-align: center">-->
+            <!--<span style="font-weight: bold;font-size: 40px">{{gamePlay.winner}}</span>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--END PLAY BLOCK-->
+
+    <!--WIFI-->
+    <div v-if="activeDialog == 'wifi'" id="wifi-dialog" class="y-dialog" style="width: 300px;"
+         data-axle-left="(w100% / 2) - 150"
+         data-axle-top="(h100% / 2) - ({#wifi-dialog}h100% / 2)">
+        <div class="dhead">Wifi Setup</div>
+        <div class="dbody">
+            Please select the WiFi network you would like to connect to.
+            <hr>
+            <table style="width: 100%;background: white">
+                <thead>
+                <tr>
+                    <th style="width: 20px;">S.No</th>
+                    <th style="width: 150px;">SSID Name</th>
+                    <th style="width: 20px;">Strength</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td v-if="wifiScanning" colspan="4" style="text-align: center;">Searching...</td>
+                    <td v-if="!wifiError && !wifiScanning && !wifiNetworks.length" colspan="4" style="text-align: center;">Wifi disabled OR No join-able wifi network around you!</td>
+                    <td v-if="wifiError" colspan="4" style="text-align: center;color: red;">Error: {{wifiError}}!</td>
+                    <!--<td colspan="4" style="text-align: center;">Invalid CentOS Resources</td>-->
+                </tr>
+                <tr v-for="(net, idx) in wifiNetworks" v-bind:class="{wificonnected: net.connected}">
+                    <td>{{idx+1}}</td>
+                    <td>{{net.ssid}}</td>
+                    <td>{{parseInt(net.signal_level, 10) + 90}}</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="dbtns">
+            <button class="y_btn" v-on:click="closeWifiDialog">Cancel</button>
+        </div>
+    </div>
+    <!--WIFI END-->
+    <!--PRINTER-->
+    <div v-if="activeDialog == 'printer'" id="printer-dialog" class="y-dialog" style="width: 300px;"
+         data-axle-left="(w100% / 2) - 150"
+         data-axle-top="(h100% / 2) - ({#printer-dialog}h100% / 2)">
+        <div class="dhead">Printer Setup</div>
+        <div class="dbody">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 40%">Printer type:</td>
+                    <td style="width: 60%">
+                        <select name="" style="width: 100%;" v-model="pType" v-on:change="printerChange()">
+                            <option v-for="(printer, idx) in printers" v-bind:value="printer.t" v-bind:selected="idx === 0">{{printer.t}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 40%">Printer port:</td>
+                    <td style="width: 60%">
+                        <select name="" id="" style="width: 100%;" v-model="pPort">
+                            <option v-for="(port, idx) in fetchPrinterPorts()" v-bind:value="port" v-bind:selected="idx === 0">{{port}}</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="dbtns">
+            <button class="y_btn" v-on:click="savePrinterSettings">Save</button>
+            <button class="y_btn" v-on:click="doTestPrint">Test Print</button>
+            <button class="y_btn" v-on:click="closePrinterDialog">Cancel</button>
+        </div>
+    </div>
+    <!--PRINTER END-->
+    <!--REGISTER-->
+    <div v-if="activeDialog == 'register'" id="register-dialog" class="y-dialog" style="width: 300px;"
+         data-axle-left="(w100% / 2) - 150"
+         data-axle-top="(h100% / 2) - ({#register-dialog}h100% / 2)">
+        <div class="dhead">Register</div>
+        <div class="dbody">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 40%">Your MAC:</td>
+                    <td style="width: 60%">
+                        <input type="text" style="width: 100%;font-size: 12px;" disabled v-bind:value="mac">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="dbtns">
+            <button class="y_btn" v-on:click="confirmRegisterationCode">Confirm</button>
+            <button class="y_btn" v-on:click="closeRegisterDialog">Cancel</button>
+        </div>
+    </div>
+    <!--REGISTER END-->
+    <!--CONNECT-->
+    <div v-if="activeDialog == 'connect'" id="connect-dialog" class="y-dialog" style="width: 300px;"
+         data-axle-left="(w100% / 2) - 150"
+         data-axle-top="(h100% / 2) - ({#connect-dialog}h100% / 2)">
+        <div class="dhead">Connect</div>
+        <div class="dbody">
+            This will connect this terminal to the central system and make it active. Are you sure you would like to continue?
+        </div>
+        <div class="dbtns">
+            <button class="y_btn" v-on:click="doConnection">Confirm</button>
+            <button class="y_btn" v-on:click="closeConnectionDialog">Cancel</button>
+        </div>
+    </div>
+    <!--CONNECT END-->
+    <!--REBOOT-->
+    <div v-if="activeDialog == 'reboot'" id="reboot-dialog" class="y-dialog" style="width: 300px;"
+         data-axle-left="(w100% / 2) - 150"
+         data-axle-top="(h100% / 2) - ({#reboot-dialog}h100% / 2)">
+        <div class="dhead">Reboot Terminal?</div>
+        <div class="dbody">
+            Are you sure about rebooting the terminal?
+        </div>
+        <div class="dbtns">
+            <button class="y_btn" v-on:click="doReboot">Reboot</button>
+            <button class="y_btn" v-on:click="closeRebootDialog">Cancel</button>
+        </div>
+    </div>
+    <!--REBOOT END-->
+    <!--REBOOT-->
+    <div v-if="activeDialog == 'shutdown'" id="shutdown-dialog" class="y-dialog" style="width: 300px;"
+         data-axle-left="(w100% / 2) - 150"
+         data-axle-top="(h100% / 2) - ({#shutown-dialog}h100% / 2)">
+        <div class="dhead">Shutdown Terminal?</div>
+        <div class="dbody">
+            Are you sure about powering off the terminal?
+        </div>
+        <div class="dbtns">
+            <button class="y_btn" v-on:click="doShutdown">Power Off</button>
+            <button class="y_btn" v-on:click="closeShutdownDialog">Cancel</button>
+        </div>
+    </div>
+    <!--REBOOT END-->
+    <!--LOGIN-->
+    <div v-if="activeDialog == 'login'" id="login-dialog" class="y-dialog" style="width: 300px;"
+         data-axle-left="(w100% / 2) - 150"
+         data-axle-top="(h100% / 2) - ({#login-dialog}h100% / 2)">
+        <div class="dhead">Login</div>
+        <form v-on:submit="doLogin">
+        <div class="dbody">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 40%">Username:</td>
+                    <td style="width: 60%">
+                        <input type="text" style="width: 100%;font-size: 12px;" placeholder="Enter Username" id="login-entrypoint" v-model="un">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 40%">Password:</td>
+                    <td style="width: 60%">
+                        <input type="password" style="width: 100%;font-size: 12px;" placeholder="Enter Password" v-model="pw">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="dbtns">
+            <button class="y_btn" type="submit">Login</button>
+            <button class="y_btn" v-on:click="closeLoginDialog" type="button">Cancel</button>
+        </div>
+        </form>
+    </div>
+    <!--LOGIN END-->
+
+    <div id="version-info" data-axle-left="( w100% / 2 ) - ( {#version-info}w100% / 2 )" v-if="!terminal">{{version}}</div>
+</div> <!--Main App-->
+
+<script src="assets/js_deps/swal2.10.js"></script>
+<script src="assets/js_deps/socket.io.js"></script>
+<script src="assets/vue-app.js"></script>
+</body>
+</html>
